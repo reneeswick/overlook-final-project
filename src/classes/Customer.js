@@ -46,6 +46,21 @@ class Customer {
     }
   }
 
+  calculateTotalSpent() {
+    let totalSpent = this.hotel.bookings.reduce((acc, booking) => {
+      if(this.id === booking.userID) {
+        this.hotel.rooms.forEach((room) => {
+          if(room.number === booking.roomNumber) {
+            acc += room.costPerNight
+          }
+        })
+      }
+      return acc
+    }, 0)
+    totalSpent = (totalSpent * 1000)
+    totalSpent = (totalSpent / 1000).toFixed(2)
+    return(`$${totalSpent}`)
+  }
 }
 
 export default Customer;
