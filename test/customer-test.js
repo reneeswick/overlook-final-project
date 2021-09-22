@@ -21,5 +21,14 @@ describe('Customer Test', () => {
     expect(user2.name).to.equal('Gracie Spaccamonti');
   });
 
+  it('should be able to save past trips', () => {
+    expect(user1.pastTrips).to.deep.equal([]);
+    expect(user2.pastTrips).to.deep.equal([]);
+  });
+
+  it('should be able to save upcoming trips', () => {
+    expect(user1.upcomingTrips).to.deep.equal([]);
+    expect(user2.upcomingTrips).to.deep.equal([]);
+  });
 
 })
