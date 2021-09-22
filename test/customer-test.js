@@ -119,4 +119,11 @@ describe('Customer Test', () => {
     expect(user2.upcomingTrips).to.deep.equal([])
     expect(user2.viewUpcomingTrips()).to.equal('You have no upcoming trips.')
   });
+
+  it('should be able to view total amount spent on rooms', () => {
+    user1.calculateTotalSpent();
+    user2.calculateTotalSpent();
+    expect(user1.calculateTotalSpent()).to.equal('$716.80');
+    expect(user2.calculateTotalSpent()).to.equal('$397.04');
+  });
 })
