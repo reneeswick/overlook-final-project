@@ -1,16 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+<!doctype html>
 
-</body>
-</html>
+<html lang= "en">
+  <head>
+    <meta charset= "utf-8">
+    <meta name= "viewport" content= "width=device-width, initial-scale-1">
+    <title> Overlook Hotels </title>
+    <link rel= "stylesheet" href= "styles.css">
+  </head>
+  <body>
+    <header>
+      <section class= "logo">
+      </section>
+      <nav>
+        <menu>
+          <li> Home </li>
+          <li> Upcoming Trips </li>
+          <li> Past Trips </li>
+        </menu>
+      </nav>
+      <section class= "username"> Username
+      </section>
+    </header>
+    <main>
+      <section class= "main-content-container">
+        <h1 class= "page-title">
+          Book a Room
+        </h1>
+        <section class= "home-view">
+          <!-- FORM CHECK IN/CHECKOUT -->
+          <!-- FILTER RADIO CHECKLIST -->
+          <section class= "hidden available-rooms-container">
+            <!-- MINI-CARDS OF AVAILABLE ROOMS -->
+          </section>
+        </section>
+        <section class= "hidden selected-room-view">
+          <section class= "hidden selected-room-container">
+            <!-- FULL VIEW OF SELECTED ROOM -->
+          </section>
+          <button type= "button" name= "book now" class= "hidden book-now-btn"> Book Now
+          </button>
+        </section>
+        <section class= "hidden upcoming-trips-view">
+          <section class= "hidden upcoming-trips-card-container">
+            <!-- MINI-CARDS OF UPCOMING EVENTS -->
+          </section>
+          <div class= "hidden total-spent" name= "total spent" role= "article"> $$$
+          </div>
+        </section>
+        <section class= "hidden past-trips-view">
+          <section class= "hiddden past-trips-card-container">
+            <!-- MINI-CARDS OF PAST TRIPS -->
+          </section>
+          <div class= "hidden total-spent" name= "total spent" role= "article"> $$$
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
