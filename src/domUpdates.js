@@ -1,5 +1,6 @@
 //////// IMPORTS ////////////////
 import {upcomingTripsBtn, pastTripsBtn} from './scripts.js';
+import {currentCustomer} from './scripts.js';
 
 
 
@@ -22,6 +23,10 @@ let domUpdates = {
 
   showHomeView() {
     pageTitle.innerText= 'Book a Room';
+  },
+
+  displayUsername() {
+    username.innerText = `${currentCustomer.name}`;
   },
 }
 

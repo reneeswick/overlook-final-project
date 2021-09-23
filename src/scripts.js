@@ -12,8 +12,7 @@ import Hotel from './classes/Hotel.js'
 import './images/turing-logo.png'
 
 //////// GLOBAL VARIABLES /////////////
-let currentCustomer;
-let hotel;
+export let currentCustomer;
 
 //////// QUERY SELECTORS //////////////
 export const homeBtn = document.querySelector('#homeBtn');
@@ -21,6 +20,7 @@ export const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
 export const pastTripsBtn = document.querySelector('#pastTripsBtn');
 const pageTitle = document.querySelector('.page-title');
 const mainContentContainer = document.querySelector('#mainContentContainer');
+const username = document.querySelector('#username');
 
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
@@ -32,6 +32,7 @@ window.addEventListener('load', getData);
 function getData() {
   return Promise.all([fetchSingleCustomerData(),fetchBookingsData(),fetchRoomsData()])
   .then(data => organizeFetchedData(data))
+  .then(() => domUpdates.displayUsername())
 }
 
 function organizeFetchedData(data) {
@@ -42,4 +43,6 @@ function organizeFetchedData(data) {
   roomsData = data[2];
   let currentHotel = new Hotel('Overlook', roomsData, bookingsData)
   currentCustomer = new Customer(currentCustomer.id, currentCustomer.name, currentHotel)
+  console.log(currentCustomer)
+  console.log(currentHotel)
 }
