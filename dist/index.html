@@ -3,27 +3,25 @@
 <html lang= "en">
   <head>
     <meta charset= "utf-8">
-    <meta name= "viewport" content= "width=device-width, initial-scale-1">
+    <meta name= "viewport" content= "width=device-width">
     <title> Overlook Hotels </title>
-    <link rel= "stylesheet" href= "styles.css">
+    <!-- <link rel= "stylesheet" href= "styles.css"> -->
   </head>
   <body>
     <header>
       <section class= "logo">
       </section>
       <nav>
-        <menu>
-          <li> Home </li>
-          <li> Upcoming Trips </li>
-          <li> Past Trips </li>
-        </menu>
+        <button type= "button" name= "Home" class= "navBtn" id= "homeBtn"> Home </button>
+        <button type= "button" name= "Upcoming Trips" class= "navBtn" id= "upcomingTripsBtn"> Upcoming Trips </button>
+        <button type= "button" name= "Past Trips" class= "navBtn" id= "pastTripsBtn"> Past Trips </button>
       </nav>
       <section class= "username"> Username
       </section>
     </header>
     <main>
       <section class= "main-content-container">
-        <h1 class= "page-title">
+        <h1 class= "page-title" id= "pageTitle">
           Book a Room
         </h1>
         <section class= "home-view">
@@ -40,8 +38,8 @@
           <button type= "button" name= "book now" class= "hidden book-now-btn"> Book Now
           </button>
         </section>
-        <section class= "hidden upcoming-trips-view">
-          <section class= "hidden upcoming-trips-card-container">
+        <section class= "hidden upcoming-trips-view" id= "upcomingTripsView">
+          <section class= "hidden upcoming-trips-card-container" id= "upcomingTripsCardContainer">
             <!-- MINI-CARDS OF UPCOMING EVENTS -->
           </section>
           <div class= "hidden total-spent" name= "total spent" role= "article"> $$$
