@@ -3,6 +3,7 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import domUpdates from './domUpdates.js';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -12,20 +13,14 @@ import './images/turing-logo.png'
 
 
 //////// QUERY SELECTORS //////////////
-const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
-const pageTitle = document.querySelector('#pageTitle');
+export const homeBtn = document.querySelector('#homeBtn');
+export const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
+export const pastTripsBtn = document.querySelector('#pastTripsBtn');
+const pageTitle = document.querySelector('.page-title');
+
 ////////// EVENT LISTENERS //////////////
-upcomingTripsBtn.addEventListener('click', showUpcomingTrips);
+homeBtn.addEventListener('click', domUpdates.showHomeView);
+upcomingTripsBtn.addEventListener('click', domUpdates.showUpcomingTrips);
+pastTripsBtn.addEventListener('click', domUpdates.showPastTrips);
 
 ////////// FUNCTIONS ////////////////
-function hide(element) {
-  element.classList.add('hidden')
-}
-
-function show(element) {
-  element.classList.remove('hidden')
-}
-
-function showUpcomingTrips() {
-  pageTitle.innerText= 'Upcoming Trips'
-}
