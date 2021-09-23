@@ -7,5 +7,14 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
+//////// GLOBAL VARIABLES /////////////
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+
+//////// QUERY SELECTORS //////////////
+const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
+
+////////// EVENT LISTENERS //////////////
+upcomingTripsBtn.addEventListner('click', showUpcomingTrips);
+
+////////// FUNCTIONS ////////////////
