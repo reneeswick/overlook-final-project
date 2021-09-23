@@ -14,7 +14,10 @@ let domUpdates = {
   },
 
   showUpcomingTrips() {
+    domUpdates.show(upcomingTripsView);
+    domUpdates.show(upcomingTripsCardContainer);
     pageTitle.innerText= 'Upcoming Trips';
+    upcomingTripsCardContainer.innerHTML = `<p> ${currentCustomer.viewUpcomingTrips()} </p>`
   },
 
   showPastTrips() {

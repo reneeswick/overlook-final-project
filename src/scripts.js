@@ -20,6 +20,8 @@ export const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
 export const pastTripsBtn = document.querySelector('#pastTripsBtn');
 const pageTitle = document.querySelector('.page-title');
 const mainContentContainer = document.querySelector('#mainContentContainer');
+const upcomingTripsView = document.querySelector('#upcomingTripsView');
+const upcomingTripsCardContainer = document.querySelector('#upcomingTripsCardContainer');
 const username = document.querySelector('#username');
 
 ////////// EVENT LISTENERS //////////////
@@ -32,7 +34,9 @@ window.addEventListener('load', getData);
 function getData() {
   return Promise.all([fetchSingleCustomerData(),fetchBookingsData(),fetchRoomsData()])
   .then(data => organizeFetchedData(data))
+  .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
   .then(() => domUpdates.displayUsername())
+  .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
 }
 
 function organizeFetchedData(data) {
