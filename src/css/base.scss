@@ -74,6 +74,26 @@ summary {
   display: list-item;
 }
 
+header {
+  height: 44px;
+}
+
+nav {
+  // justify-content: center;
+  // align-content: center;
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.navigation-container {
+  display: flex;
+  height: 192px;
+}
+
 .hidden {
   display:none;
 }
