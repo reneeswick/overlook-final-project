@@ -4,23 +4,42 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js';
+import {fetchSingleCustomerData, fetchBookingsData, fetchRoomsData} from './apiCalls.js';
+import Customer from './classes/Customer.js';
+import Hotel from './classes/Hotel.js'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
 //////// GLOBAL VARIABLES /////////////
-
-
+let currentCustomer;
+let hotel;
 
 //////// QUERY SELECTORS //////////////
 export const homeBtn = document.querySelector('#homeBtn');
 export const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
 export const pastTripsBtn = document.querySelector('#pastTripsBtn');
 const pageTitle = document.querySelector('.page-title');
+const mainContentContainer = document.querySelector('#mainContentContainer');
 
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
 upcomingTripsBtn.addEventListener('click', domUpdates.showUpcomingTrips);
 pastTripsBtn.addEventListener('click', domUpdates.showPastTrips);
+window.addEventListener('load', getData);
 
 ////////// FUNCTIONS ////////////////
+function getData() {
+  return Promise.all([fetchSingleCustomerData(),fetchBookingsData(),fetchRoomsData()])
+  .then(data => organizeFetchedData(data))
+}
+
+function organizeFetchedData(data) {
+  let bookingsData;
+  let roomsData;
+  currentCustomer = data[0];
+  bookingsData = data[1];
+  roomsData = data[2];
+  let currentHotel = new Hotel('Overlook', roomsData, bookingsData)
+  currentCustomer = new Customer(currentCustomer.id, currentCustomer.name, currentHotel)
+}
