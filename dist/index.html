@@ -16,11 +16,11 @@
         <button type= "button" name= "Upcoming Trips" class= "navBtn" id= "upcomingTripsBtn"> Upcoming Trips </button>
         <button type= "button" name= "Past Trips" class= "navBtn" id= "pastTripsBtn"> Past Trips </button>
       </nav>
-      <section class= "username"> Username
+      <section class= "username" id= "username"> Username
       </section>
     </header>
     <main>
-      <section class= "main-content-container">
+      <section class= "main-content-container" id= "mainContentContainer">
         <h1 class= "page-title" id= "pageTitle">
           Book a Room
         </h1>
@@ -42,16 +42,13 @@
           <section class= "hidden upcoming-trips-card-container" id= "upcomingTripsCardContainer">
             <!-- MINI-CARDS OF UPCOMING EVENTS -->
           </section>
-          <div class= "hidden total-spent" name= "total spent" role= "article"> $$$
-          </div>
         </section>
-        <section class= "hidden past-trips-view">
-          <section class= "hiddden past-trips-card-container">
+        <section class= "hidden past-trips-view" id= "pastTripsView">
+          <section class= "hiddden past-trips-card-container" id= "pastTripsCardContainer">
             <!-- MINI-CARDS OF PAST TRIPS -->
           </section>
-          <div class= "hidden total-spent" name= "total spent" role= "article"> $$$
-          </div>
         </section>
+        <div class= "hidden total-spent" id= "totalSpent" name= "total spent" role= "article"> $$$ </div>
       </section>
     </main>
     <script src="bundle.js"></script>

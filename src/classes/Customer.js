@@ -26,7 +26,7 @@ class Customer {
 
   viewPastTrips(){
     let currentDate = this.calculateCurrentDate();
-    let pastTrips = this.hotel.bookings.filter((booking) => {
+    let pastTrips = this.hotel.bookings.bookings.filter((booking) => {
       return booking.userID === this.id && booking.date < currentDate
     })
     this.pastTrips = pastTrips
@@ -34,8 +34,9 @@ class Customer {
   }
 
   viewUpcomingTrips() {
+    // console.log(this.hotel.bookings.bookings)
     let currentDate = this.calculateCurrentDate();
-    let upcomingTrips = this.hotel.bookings.filter((booking) => {
+    let upcomingTrips = this.hotel.bookings.bookings.filter((booking) => {
       return booking.userID === this.id && booking.date >= currentDate
     })
     this.upcomingTrips = upcomingTrips;
@@ -47,9 +48,9 @@ class Customer {
   }
 
   calculateTotalSpent() {
-    let totalSpent = this.hotel.bookings.reduce((acc, booking) => {
+    let totalSpent = this.hotel.bookings.bookings.reduce((acc, booking) => {
       if(this.id === booking.userID) {
-        this.hotel.rooms.forEach((room) => {
+        this.hotel.rooms.rooms.forEach((room) => {
           if(room.number === booking.roomNumber) {
             acc += room.costPerNight
           }
