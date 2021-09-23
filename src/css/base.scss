@@ -40,6 +40,7 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+  cursor: pointer;
 }
 
 button,
@@ -91,6 +92,17 @@ nav {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+.navBtn {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 1px solid #BD243E;
+}
+
+.navBtn:hover {
+  border: dotted #BD243E;
 }
 
 .username {
