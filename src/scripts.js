@@ -22,6 +22,9 @@ const pageTitle = document.querySelector('.page-title');
 const mainContentContainer = document.querySelector('#mainContentContainer');
 const upcomingTripsView = document.querySelector('#upcomingTripsView');
 const upcomingTripsCardContainer = document.querySelector('#upcomingTripsCardContainer');
+const pastTripsView = document.querySelector('#pastTripsView');
+const pastTripsCardContainer = document.querySelector('#pastTripsCardContainer');
+const totalSpent = document.querySelector('#totalSpent');
 const username = document.querySelector('#username');
 
 ////////// EVENT LISTENERS //////////////
@@ -47,6 +50,4 @@ function organizeFetchedData(data) {
   roomsData = data[2];
   let currentHotel = new Hotel('Overlook', roomsData, bookingsData)
   currentCustomer = new Customer(currentCustomer.id, currentCustomer.name, currentHotel)
-  console.log(currentCustomer)
-  console.log(currentHotel)
 }
