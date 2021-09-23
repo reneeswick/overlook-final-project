@@ -13,8 +13,19 @@ import './images/turing-logo.png'
 
 //////// QUERY SELECTORS //////////////
 const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
-
+const pageTitle = document.querySelector('#pageTitle');
 ////////// EVENT LISTENERS //////////////
-upcomingTripsBtn.addEventListner('click', showUpcomingTrips);
+upcomingTripsBtn.addEventListener('click', showUpcomingTrips);
 
 ////////// FUNCTIONS ////////////////
+function hide(element) {
+  element.classList.add('hidden')
+}
+
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function showUpcomingTrips() {
+  pageTitle.innerText= 'Upcoming Trips'
+}
