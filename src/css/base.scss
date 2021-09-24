@@ -121,6 +121,17 @@ nav {
   border-bottom: #BD243E solid 5px;
 }
 
+.past-trips-view {
+  background-color: #ebeef2;
+  opacity: 0.6;
+  min-height: 90vh;
+}
+
+.past-trips-card-container {
+  opacity: none;
+  border: red solid 5px;
+}
+
 .hidden {
   display:none;
 }
