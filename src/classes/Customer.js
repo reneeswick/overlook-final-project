@@ -34,7 +34,6 @@ class Customer {
   }
 
   viewUpcomingTrips() {
-    // console.log(this.hotel.bookings.bookings)
     let currentDate = this.calculateCurrentDate();
     let upcomingTrips = this.hotel.bookings.bookings.filter((booking) => {
       return booking.userID === this.id && booking.date >= currentDate
