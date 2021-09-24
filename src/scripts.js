@@ -14,12 +14,14 @@ import './images/turing-logo.png'
 //////// GLOBAL VARIABLES /////////////
 export let currentCustomer;
 
-//////// QUERY SELECTORS //////////////
+//////// BUTTONS ///////////////////////
 export const homeBtn = document.querySelector('#homeBtn');
 export const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
 export const pastTripsBtn = document.querySelector('#pastTripsBtn');
+///////// QUERY SELECTORS /////////////////////
 const pageTitle = document.querySelector('.page-title');
 const mainContentContainer = document.querySelector('#mainContentContainer');
+const homeView = document.querySelector('#homeView');
 const upcomingTripsView = document.querySelector('#upcomingTripsView');
 const upcomingTripsCardContainer = document.querySelector('#upcomingTripsCardContainer');
 const pastTripsView = document.querySelector('#pastTripsView');

@@ -9,24 +9,30 @@
   </head>
   <body>
     <header>
-      <section class= "logo">
-      </section>
+      <!-- <img src= "/images/overlook_logo.png" alt= "a stylish white O" class= "logo"> -->
+      <section class= "username" id= "username"> Username </section>
+    </header>
+    <section class= "navigation-container" role= "region">
       <nav>
         <button type= "button" name= "Home" class= "navBtn" id= "homeBtn"> Home </button>
         <button type= "button" name= "Upcoming Trips" class= "navBtn" id= "upcomingTripsBtn"> Upcoming Trips </button>
         <button type= "button" name= "Past Trips" class= "navBtn" id= "pastTripsBtn"> Past Trips </button>
       </nav>
-      <section class= "username" id= "username"> Username
-      </section>
-    </header>
+    </section>
     <main>
       <section class= "main-content-container" id= "mainContentContainer">
         <h1 class= "page-title" id= "pageTitle">
-          Book a Room
+          Welcome to The Overlook
         </h1>
-        <section class= "home-view">
-          <!-- FORM CHECK IN/CHECKOUT -->
-          <!-- FILTER RADIO CHECKLIST -->
+        <section class= "home-view" id= "homeView">
+          <p1 class= "subtitle"> Book your stay </p1>
+          <section class= "calender-view">
+            <label for= "check in"> Check In </label>
+            <input class= "calendar" type="date" class= "date-picker" id= "checkIn">
+            <label for= "check out"> Check Out </label>
+            <input class= "calendar" type="date" class= "date-picker" id= "checkOut">
+            <input class= "availabilityBtn" type= "submit" value= "See what's available">
+          </section>
           <section class= "hidden available-rooms-container">
             <!-- MINI-CARDS OF AVAILABLE ROOMS -->
           </section>

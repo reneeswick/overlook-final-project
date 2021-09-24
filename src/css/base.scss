@@ -2,6 +2,7 @@
 @import '_variables';
 
 html {
+  font-family: 'Quicksand', sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
@@ -14,11 +15,16 @@ body {
 
 main {
   display: block;
+  min-height: 100vh;
+  background-image: url(https://www.puredestinations.co.uk/wp-content/uploads/2018/03/The-Best-Hotels-To-See-The-Northern-Lights-header--1600x700.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
+  color: white;
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: 0;
 }
 
 img {
@@ -34,6 +40,7 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+  cursor: pointer;
 }
 
 button,
@@ -72,6 +79,71 @@ progress {
 
 summary {
   display: list-item;
+}
+
+header {
+  background-color: black;
+  color: white;
+  font-size: 14pt;
+  height: 44px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.navBtn {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+}
+
+.navBtn:hover {
+  border: dotted #BD243E;
+}
+
+.username {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-weight: 300;
+  color: #FFB611;
+}
+
+.navigation-container {
+  display: flex;
+  height: 172px;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: #BD243E solid 5px;
+}
+
+.subtitle {
+  color: #676099;
+  font-size: 20pt;
+}
+
+.past-trips-view,
+.home-view {
+  // background-color: #ebeef2;
+  // opacity: 0.6;
+  min-height: 80vh;
+}
+
+.calender-view {
+  color: white;
+}
+
+.availabilityBtn {
+  background-color: #FFB611;
+}
+
+.past-trips-card-container {
+  border: red solid 2px;
 }
 
 .hidden {
