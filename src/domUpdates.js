@@ -2,8 +2,7 @@
 import {upcomingTripsBtn, pastTripsBtn} from './scripts.js';
 import {currentCustomer} from './scripts.js';
 
-
-
+///////// DOM UPDATES //////////
 let domUpdates = {
   hide(element) {
     element.classList.add('hidden');
@@ -14,12 +13,13 @@ let domUpdates = {
   },
 
   showHomeView() {
+    domUpdates.show(homeView);
     domUpdates.hide(pastTripsView);
     domUpdates.hide(pastTripsCardContainer);
     domUpdates.hide(upcomingTripsView);
     domUpdates.hide(upcomingTripsCardContainer);
     domUpdates.hide(totalSpent);
-    pageTitle.innerText= 'Book a Room';
+    pageTitle.innerText= 'Welcome to The Overlook';
   },
 
   displayUsername() {
@@ -29,6 +29,7 @@ let domUpdates = {
   showUpcomingTrips() {
     domUpdates.show(upcomingTripsView);
     domUpdates.show(upcomingTripsCardContainer);
+    domUpdates.hide(homeView);
     domUpdates.hide(pastTripsView);
     domUpdates.hide(pastTripsCardContainer);
     domUpdates.hide(totalSpent);
@@ -40,6 +41,7 @@ let domUpdates = {
     domUpdates.show(pastTripsView);
     domUpdates.show(pastTripsCardContainer);
     domUpdates.show(totalSpent);
+    domUpdates.hide(homeView);
     domUpdates.hide(upcomingTripsView);
     domUpdates.hide(upcomingTripsCardContainer);
     currentCustomer.viewPastTrips();

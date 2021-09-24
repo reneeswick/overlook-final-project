@@ -98,7 +98,8 @@ nav {
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  border: 1px solid #BD243E;
+  border: none;
+  background-color: white;
 }
 
 .navBtn:hover {
@@ -115,21 +116,33 @@ nav {
 
 .navigation-container {
   display: flex;
-  height: 192px;
+  height: 172px;
   flex-direction: column;
   justify-content: flex-end;
   border-bottom: #BD243E solid 5px;
 }
 
-.past-trips-view {
-  background-color: #ebeef2;
-  opacity: 0.6;
-  min-height: 90vh;
+.subtitle {
+  color: #676099;
+  font-size: 20pt;
+}
+
+.past-trips-view,
+.home-view {
+  // background-color: #ebeef2;
+  // opacity: 0.6;
+  min-height: 80vh;
+}
+
+.calender-view {
+  color: white;
+}
+
+.availabilityBtn {
+  background-color: #FFB611;
 }
 
 .past-trips-card-container {
-  color: inherit;
-  opacity: none;
   border: red solid 2px;
 }
 
