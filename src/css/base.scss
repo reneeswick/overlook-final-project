@@ -128,6 +128,8 @@ nav {
 }
 
 .past-trips-view,
+.upcoming-trips-view,
+.available-rooms-view,
 .home-view {
   // background-color: #ebeef2;
   // opacity: 0.6;
@@ -144,6 +146,10 @@ nav {
 
 .past-trips-card-container {
   border: red solid 2px;
+}
+
+.room-mini-card {
+  background-color: white;
 }
 
 .hidden {
