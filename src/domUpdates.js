@@ -34,7 +34,20 @@ let domUpdates = {
     domUpdates.hide(pastTripsCardContainer);
     domUpdates.hide(totalSpent);
     pageTitle.innerText= 'Upcoming Trips';
-    upcomingTripsCardContainer.innerHTML = `<p> ${currentCustomer.viewUpcomingTrips()} </p>`
+    currentCustomer.viewUpcomingTrips();
+    if(currentCustomer.upcomingTrips.length === 0) {
+      upcomingTripsCardContainer.innerHTML = `<p>You have no upcoming trips.</p>`
+    } else {
+      let upcomingTripsMiniCards = currentCustomer.upcomingTrips.reduce((acc, trip) => {
+        acc +=
+        `<section class "mini-card">
+          <p1> Date: ${trip.date} </p1>
+          <p2>Room Number: ${trip.roomNumber}</p2>
+        </section>`
+        return acc
+      }, '')
+      upcomingTripsCardContainer.innerHTML = upcomingTripsMiniCards;
+    }
   },
 
   showPastTrips() {
@@ -55,7 +68,6 @@ let domUpdates = {
       </section>`
       return acc
     }, '')
-
     pastTripsCardContainer.innerHTML = pastTripMiniCards
   },
 
