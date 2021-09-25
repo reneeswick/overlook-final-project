@@ -29,17 +29,21 @@ const pastTripsView = document.querySelector('#pastTripsView');
 const pastTripsCardContainer = document.querySelector('#pastTripsCardContainer');
 const availableRoomsView = document.querySelector('#availableRoomsView');
 const availableRoomsCardContainer = document.querySelector('#availableRoomsCardContainer');
+const selectedRoomView = document.querySelector('#selectedRoomView');
+const selectedRoomContainer = document.querySelector('#selectedRoomContainer');
 const totalSpent = document.querySelector('#totalSpent');
 const username = document.querySelector('#username');
 const checkInDate = document.querySelector('#checkInDate');
 const checkOutDate = document.querySelector('#checkOutDate');
 const roomType = document.querySelector('#roomTypes');
 
+
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
 upcomingTripsBtn.addEventListener('click', domUpdates.showUpcomingTrips);
 pastTripsBtn.addEventListener('click', domUpdates.showPastTrips);
 availabilityBtn.addEventListener('click', domUpdates.showAvailableRooms);
+availableRoomsCardContainer.addEventListener('click', domUpdates.showRoomDetails);
 window.addEventListener('load', getData);
 
 ////////// FUNCTIONS ////////////////

@@ -20,6 +20,8 @@ let domUpdates = {
     domUpdates.hide(upcomingTripsView);
     domUpdates.hide(upcomingTripsCardContainer);
     domUpdates.hide(totalSpent);
+    domUpdates.hide(availableRoomsView);
+    domUpdates.hide(availableRoomsCardContainer);
     pageTitle.innerText= 'Welcome to The Overlook';
   },
 
@@ -90,7 +92,7 @@ let domUpdates = {
     } else {
       let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
         acc +=
-        `<section class= "room-mini-card">
+        `<section class= "room-mini-card" id= "${room.number}">
         <p1> Room Type: ${room.roomType}</p1>
         <p2> Bed Size: ${room.bedSize}</p2>
         <p3> Number of Bed: ${room.numBeds}</p3>
@@ -101,6 +103,28 @@ let domUpdates = {
       }, '')
       availableRoomsCardContainer.innerHTML = availableRoomsMiniCards
     }
+  },
+
+  showRoomDetails(event) {
+    domUpdates.show(selectedRoomView);
+    domUpdates.show(selectedRoomContainer);
+    domUpdates.hide(availableRoomsView);
+    domUpdates.hide(availableRoomsCardContainer);
+    domUpdates.hide(homeView);
+    let selectedRoom = currentCustomer.hotel.rooms.rooms.find((room) => {
+      return room.number === parseInt(event.target.id)
+    })
+    selectedRoomContainer.innerHTML =
+      `<section class= "selected-room" id= "${selectedRoom.number}">
+        <h2> ${selectedRoom.roomType} </h2>
+        <button type= "button" name= "book now" class= "book-now">
+        Book Now
+        </button>
+        <p1> ${selectedRoom.bedSize} </p1>
+        <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
+        <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
+        <p4> $${selectedRoom.costPerNight}/night</p4>
+      </section>`
   }
 }
 

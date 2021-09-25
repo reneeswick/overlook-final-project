@@ -130,9 +130,9 @@ nav {
 .past-trips-view,
 .upcoming-trips-view,
 .available-rooms-view,
-.home-view {
-  // background-color: #ebeef2;
-  // opacity: 0.6;
+.home-view
+.selected-room {
+  border: yellow solid 2px;
   min-height: 80vh;
 }
 
@@ -144,12 +144,28 @@ nav {
   background-color: #FFB611;
 }
 
-.past-trips-card-container {
+.available-rooms-card-container,
+.past-trips-card-container,
+.upcoming-trips-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 5px;
+  row-gap: 5px;
   border: red solid 2px;
 }
 
+.mini-card,
 .room-mini-card {
   background-color: white;
+  opacity: 0.7;
+  height: 20vh;
+  font-size: 12pt;
+  cursor: pointer;
+}
+
+.mini-card:hover,
+.room-mini-card:hover {
+  opacity: 1;
 }
 
 .hidden {
