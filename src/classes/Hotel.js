@@ -19,7 +19,15 @@ class Hotel {
       }
     })
     return availableRooms
-  }
+  };
+
+  filterByRoomType(roomType, checkInDate, checkOutDate) {
+    let availableRooms = this.findAvailability(checkInDate, checkOutDate);
+    let filteredRooms = availableRooms.filter((room) => {
+      return roomType === room.roomType
+    })
+    return filteredRooms
+  };
 }
 
 

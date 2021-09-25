@@ -7,7 +7,7 @@ class Customer {
     this.hotel = hotel;
     this.pastTrips = [];
     this.upcomingTrips = [];
-  }
+  };
 
   calculateCurrentDate(){
     let today = new Date();
@@ -22,7 +22,7 @@ class Customer {
     }
     let currentDate = `${year}/${month}/${date}`;
     return currentDate;
-  }
+  };
 
   viewPastTrips(){
     let currentDate = this.calculateCurrentDate();
@@ -31,7 +31,7 @@ class Customer {
     })
     this.pastTrips = pastTrips
     return this.pastTrips
-  }
+  };
 
   viewUpcomingTrips() {
     let currentDate = this.calculateCurrentDate();
@@ -44,7 +44,7 @@ class Customer {
     } else {
       return this.upcomingTrips
     }
-  }
+  };
 
   calculateTotalSpent() {
     let totalSpent = this.hotel.bookings.bookings.reduce((acc, booking) => {

@@ -80,6 +80,12 @@ describe('Hotel tests', () => {
 
   it('should show availability using a checkIn and checkOut date', () => {
     expect(hotelA.findAvailability('2020/04/22', '2020/04/23')).to.deep.equal([rooms.rooms[1]]);
-    expect(hotelA.findAvailability('2020/04/23'), '2020/04/25').to.deep.equal([rooms.rooms[0], rooms.rooms[1], rooms.rooms[2]]);
+    expect(hotelA.findAvailability('2020/04/23', '2020/04/25')).to.deep.equal([rooms.rooms[1], rooms.rooms[2]]);
+  });
+
+  it('should be able to filter available rooms by room type', () => {
+    hotelA.findAvailability('2020/04/23', '2020/04/25');
+    expect(hotelA.filterByRoomType('single room')).to.deep.equal([rooms.rooms[1]]);
+    expect(hotelA.filterByRoomType('suite')).to.deep.equal([rooms.rooms[0]]);
   });
 });
