@@ -18,7 +18,7 @@ export let currentCustomer;
 export const homeBtn = document.querySelector('#homeBtn');
 export const upcomingTripsBtn = document.querySelector('#upcomingTripsBtn');
 export const pastTripsBtn = document.querySelector('#pastTripsBtn');
-const availabilityBtn = document.querySelector('#availabilityBtn');
+export const availabilityBtn = document.querySelector('#availabilityBtn');
 ///////// QUERY SELECTORS /////////////////////
 const pageTitle = document.querySelector('.page-title');
 const mainContentContainer = document.querySelector('#mainContentContainer');
@@ -27,6 +27,8 @@ const upcomingTripsView = document.querySelector('#upcomingTripsView');
 const upcomingTripsCardContainer = document.querySelector('#upcomingTripsCardContainer');
 const pastTripsView = document.querySelector('#pastTripsView');
 const pastTripsCardContainer = document.querySelector('#pastTripsCardContainer');
+const availableRoomsView = document.querySelector('#availableRoomsView');
+const availableRoomsCardContainer = document.querySelector('#availableRoomsCardContainer');
 const totalSpent = document.querySelector('#totalSpent');
 const username = document.querySelector('#username');
 const checkInDate = document.querySelector('#checkInDate');
@@ -36,7 +38,7 @@ const checkOutDate = document.querySelector('#checkOutDate');
 homeBtn.addEventListener('click', domUpdates.showHomeView);
 upcomingTripsBtn.addEventListener('click', domUpdates.showUpcomingTrips);
 pastTripsBtn.addEventListener('click', domUpdates.showPastTrips);
-availabilityBtn.addEventListener('click', checkAvailability);
+availabilityBtn.addEventListener('click', domUpdates.showAvailableRooms);
 window.addEventListener('load', getData);
 
 ////////// FUNCTIONS ////////////////
@@ -58,8 +60,9 @@ function organizeFetchedData(data) {
   currentCustomer = new Customer(currentCustomer.id, currentCustomer.name, currentHotel)
 };
 
-function checkAvailability() {
+export function checkAvailability() {
   let checkIn = checkInDate.value.split('-').join('/')
   let checkOut = checkOutDate.value.split('-').join('/')
-  console.log(checkIn)
-}
+  let availableRooms = currentCustomer.hotel.findAvailability(checkIn, checkOut);
+  return availableRooms;
+};
