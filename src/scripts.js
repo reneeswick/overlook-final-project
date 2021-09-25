@@ -33,6 +33,7 @@ const totalSpent = document.querySelector('#totalSpent');
 const username = document.querySelector('#username');
 const checkInDate = document.querySelector('#checkInDate');
 const checkOutDate = document.querySelector('#checkOutDate');
+const roomType = document.querySelector('#roomTypes');
 
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
@@ -63,6 +64,12 @@ function organizeFetchedData(data) {
 export function checkAvailability() {
   let checkIn = checkInDate.value.split('-').join('/')
   let checkOut = checkOutDate.value.split('-').join('/')
-  let availableRooms = currentCustomer.hotel.findAvailability(checkIn, checkOut);
+  let roomType = roomTypes.value
+  let availableRooms;
+  if(roomType === 'all') {
+    availableRooms = currentCustomer.hotel.findAvailability(checkIn, checkOut);
+  } else {
+    availableRooms = currentCustomer.hotel.filterByRoomType(roomType, checkIn, checkOut)
+  }
   return availableRooms;
 };
