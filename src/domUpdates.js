@@ -81,19 +81,26 @@ let domUpdates = {
     domUpdates.show(availableRoomsView);
     domUpdates.show(availableRoomsCardContainer);
     let availableRooms = checkAvailability();
-    console.log(availableRooms)
-    let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
-      acc +=
-      `<section class= "room-mini-card">
+    if(availableRooms.length === 0) {
+      availableRoomsCardContainer.innerHTML =
+        `<section>
+          <p1>We're sorry, there are currently no rooms available that meet your search.</p1>
+          <p2>Try revising your dates or room type to see what else we have available for you </p2>
+        </section>`
+    } else {
+      let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
+        acc +=
+        `<section class= "room-mini-card">
         <p1> Room Type: ${room.roomType}</p1>
         <p2> Bed Size: ${room.bedSize}</p2>
         <p3> Number of Bed: ${room.numBeds}</p3>
         <p4> Cost: $${room.costPerNight}</p4>
         <p5> Per Night </p5>
-      </section>`
-    return acc
-    }, '')
-    availableRoomsCardContainer.innerHTML = availableRoomsMiniCards
+        </section>`
+        return acc
+      }, '')
+      availableRoomsCardContainer.innerHTML = availableRoomsMiniCards
+    }
   }
 }
 
