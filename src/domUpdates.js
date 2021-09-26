@@ -2,7 +2,7 @@
 import {upcomingTripsBtn, pastTripsBtn, availabilityBtn} from './scripts.js';
 import {currentCustomer} from './scripts.js';
 import {checkAvailability, getData} from './scripts.js';
-import {bookARoom} from './apiCalls.js';
+import {bookARoom, cancelRoom} from './apiCalls.js';
 
 ///////// DOM UPDATES //////////
 let domUpdates = {
@@ -47,6 +47,9 @@ let domUpdates = {
         `<section class= "mini-card">
           <p1> Date: ${trip.date} </p1>
           <p2>Room Number: ${trip.roomNumber}</p2>
+          <button type= "button" name= "cancel" class= "cancel" id= "${trip.id}">
+          Cancel
+          </button>
         </section>`
         return acc
       }, '')
@@ -61,6 +64,7 @@ let domUpdates = {
     domUpdates.hide(homeView);
     domUpdates.hide(upcomingTripsView);
     domUpdates.hide(upcomingTripsCardContainer);
+    getData();
     currentCustomer.viewPastTrips();
     domUpdates.showTotalSpent();
     pageTitle.innerText= 'Past Trips';
@@ -130,6 +134,7 @@ let domUpdates = {
 
   showBookingsConfirmation(event) {
     currentCustomer.bookingDates = []
+    currentCustomer.confirmation = null;
     let userID = currentCustomer.id;
     let roomNumber = parseInt(event.target.id);
     if(event.target.className === 'book-now') {
@@ -143,6 +148,14 @@ let domUpdates = {
           </section>`)
           .then(() => getData())
       })
+    }
+  },
+
+  cancelBooking(event) {
+    // console.log(event)
+    if(event.target.className === 'cancel') {
+      let bookingsID = parseInt(event.target.id)
+      cancelRoom(bookingsID)
     }
   }
 }
