@@ -7,6 +7,7 @@ class Customer {
     this.hotel = hotel;
     this.pastTrips = [];
     this.upcomingTrips = [];
+    this.bookingDates = [];
   };
 
   calculateCurrentDate(){
@@ -60,7 +61,33 @@ class Customer {
     totalSpent = (totalSpent * 1000)
     totalSpent = (totalSpent / 1000).toFixed(2)
     return(`$${totalSpent}`)
-  }
+  };
+
+  setBookingDates(checkIn, checkOut) {
+    this.bookingDates.push(checkIn, checkOut)
+    let checkInDate = new Date(checkIn)
+    let checkOutDate = new Date(checkOut)
+    let dateDiff = checkOutDate.getDate() - checkInDate.getDate()
+    let date = checkInDate.getDate()
+    let additionalDates = [];
+    if(dateDiff >= 2 && !additionalDates.includes(checkOut)) {
+      date = date + 1
+      date = new Date(checkInDate.setDate(date))
+      let month = date.getMonth() + 1
+      if(month < 10) {
+        month = `0${month}`
+      }
+      let fullDate = date.getDate()
+      if(fullDate < 10) {
+        fullDate = `0${fullDate}`
+      }
+      date = `${date.getFullYear()}/${month}/${fullDate}`
+      additionalDates.push(date)
+    }
+    additionalDates.map((date) => {
+      this.bookingDates.push(date)
+    })
+  };
 }
 
 export default Customer;

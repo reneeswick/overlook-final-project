@@ -132,4 +132,16 @@ describe('Customer Test', () => {
     expect(user1.calculateTotalSpent()).to.equal('$716.80');
     expect(user2.calculateTotalSpent()).to.equal('$397.04');
   });
+
+  it('should hold booking dates', () => {
+    expect(user1.bookingDates).to.deep.equal([]);
+    expect(user2.bookingDates).to.deep.equal([]);
+  });
+
+  it('should hold each individual date from checkIn to checkOut', () => {
+    user1.setBookingDates('2020/04/23', '2020/04/25');
+    user2.setBookingDates('2020/04/23', '2020/04/24');
+    expect(user1.bookingDates).to.deep.equal(['2020/04/23', '2020/04/25', '2020/04/24']);
+    expect(user2.bookingDates).to.deep.equal(['2020/04/23', '2020/04/24']);
+  });
 })

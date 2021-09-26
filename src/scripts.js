@@ -44,6 +44,7 @@ upcomingTripsBtn.addEventListener('click', domUpdates.showUpcomingTrips);
 pastTripsBtn.addEventListener('click', domUpdates.showPastTrips);
 availabilityBtn.addEventListener('click', domUpdates.showAvailableRooms);
 availableRoomsCardContainer.addEventListener('click', domUpdates.showRoomDetails);
+selectedRoomContainer.addEventListener('click', domUpdates.showBookingsConfirmation);
 window.addEventListener('load', getData);
 
 ////////// FUNCTIONS ////////////////

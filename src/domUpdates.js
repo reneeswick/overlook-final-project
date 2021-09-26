@@ -2,6 +2,7 @@
 import {upcomingTripsBtn, pastTripsBtn, availabilityBtn} from './scripts.js';
 import {currentCustomer} from './scripts.js';
 import {checkAvailability} from './scripts.js';
+import {bookARoom} from './apiCalls.js';
 
 ///////// DOM UPDATES //////////
 let domUpdates = {
@@ -115,9 +116,9 @@ let domUpdates = {
       return room.number === parseInt(event.target.id)
     })
     selectedRoomContainer.innerHTML =
-      `<section class= "selected-room" id= "${selectedRoom.number}">
+      `<section class= "selected-room">
         <h2> ${selectedRoom.roomType} </h2>
-        <button type= "button" name= "book now" class= "book-now">
+        <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
         Book Now
         </button>
         <p1> ${selectedRoom.bedSize} </p1>
@@ -125,6 +126,15 @@ let domUpdates = {
         <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
         <p4> $${selectedRoom.costPerNight}/night</p4>
       </section>`
+  },
+
+  showBookingsConfirmation(event) {
+    let userID = currentCustomer.id
+    let roomNumber = parseInt(event.target.id)
+    let availableRooms = checkAvailability()
+    // if(event.target.className === 'book-now') {
+    //   bookARoom(userID, bookingDate, roomNumber)
+    // }
   }
 }
 
