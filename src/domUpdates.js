@@ -1,7 +1,7 @@
 //////// IMPORTS ////////////////
 import {upcomingTripsBtn, pastTripsBtn, availabilityBtn} from './scripts.js';
 import {currentCustomer} from './scripts.js';
-import {checkAvailability} from './scripts.js';
+import {checkAvailability, getData} from './scripts.js';
 import {bookARoom} from './apiCalls.js';
 
 ///////// DOM UPDATES //////////
@@ -129,12 +129,21 @@ let domUpdates = {
   },
 
   showBookingsConfirmation(event) {
-    let userID = currentCustomer.id
-    let roomNumber = parseInt(event.target.id)
-    let availableRooms = checkAvailability()
-    // if(event.target.className === 'book-now') {
-    //   bookARoom(userID, bookingDate, roomNumber)
-    // }
+    currentCustomer.bookingDates = []
+    let userID = currentCustomer.id;
+    let roomNumber = parseInt(event.target.id);
+    if(event.target.className === 'book-now') {
+      currentCustomer.setBookingDates(currentCustomer.checkInDate, currentCustomer.checkOutDate);
+      currentCustomer.bookingDates.map((date) => {
+        bookARoom(userID, date, roomNumber)
+        .then(() => selectedRoomContainer.innerHTML =
+          `<section class= "confirmation">
+            <p1> Congratulations! Your booking was successful for ${currentCustomer.name}</p1>
+            <p2> Dates of stay: ${currentCustomer.checkInDate} to ${currentCustomer.checkOutDate} </p2>
+          </section>`)
+          .then(() => getData())
+      })
+    }
   }
 }
 

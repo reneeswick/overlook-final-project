@@ -48,7 +48,7 @@ selectedRoomContainer.addEventListener('click', domUpdates.showBookingsConfirmat
 window.addEventListener('load', getData);
 
 ////////// FUNCTIONS ////////////////
-function getData() {
+export function getData() {
   return Promise.all([fetchSingleCustomerData(),fetchBookingsData(),fetchRoomsData()])
   .then(data => organizeFetchedData(data))
   .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
@@ -67,14 +67,16 @@ function organizeFetchedData(data) {
 };
 
 export function checkAvailability() {
-  let checkIn = checkInDate.value.split('-').join('/')
-  let checkOut = checkOutDate.value.split('-').join('/')
+  currentCustomer.checkInDate = null;
+  currentCustomer.checkOutDate = null;
+  currentCustomer.checkInDate = checkInDate.value.split('-').join('/');
+  currentCustomer.checkOutDate = checkOutDate.value.split('-').join('/');
   let roomType = roomTypes.value
   let availableRooms;
   if(roomType === 'all') {
-    availableRooms = currentCustomer.hotel.findAvailability(checkIn, checkOut);
+    availableRooms = currentCustomer.hotel.findAvailability(currentCustomer.checkInDate, currentCustomer.checkOutDate);
   } else {
-    availableRooms = currentCustomer.hotel.filterByRoomType(roomType, checkIn, checkOut)
+    availableRooms = currentCustomer.hotel.filterByRoomType(roomType, currentCustomer.checkInDate, currentCustomer.checkOutDate)
   }
   return availableRooms;
 };

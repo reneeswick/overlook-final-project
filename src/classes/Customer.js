@@ -5,6 +5,8 @@ class Customer {
     this.id = id;
     this.name = name;
     this.hotel = hotel;
+    this.checkInDate = null;
+    this.checkOutDate = null;
     this.pastTrips = [];
     this.upcomingTrips = [];
     this.bookingDates = [];
@@ -68,6 +70,7 @@ class Customer {
     let checkInDate = new Date(checkIn)
     let checkOutDate = new Date(checkOut)
     let dateDiff = checkOutDate.getDate() - checkInDate.getDate()
+    // console.log(new Date(checkInDate.setDate(checkInDate.getDate() + 1)))
     let date = checkInDate.getDate()
     let additionalDates = [];
     if(dateDiff >= 2 && !additionalDates.includes(checkOut)) {
