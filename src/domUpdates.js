@@ -64,7 +64,7 @@ let domUpdates = {
     domUpdates.hide(homeView);
     domUpdates.hide(upcomingTripsView);
     domUpdates.hide(upcomingTripsCardContainer);
-    getData();
+    getData(currentCustomer.id);
     currentCustomer.viewPastTrips();
     domUpdates.showTotalSpent();
     pageTitle.innerText= 'Past Trips';
@@ -146,7 +146,7 @@ let domUpdates = {
             <p1> Congratulations! Your booking was successful for ${currentCustomer.name}</p1>
             <p2> Dates of stay: ${currentCustomer.checkInDate} to ${currentCustomer.checkOutDate} </p2>
           </section>`)
-          .then(() => getData())
+          .then(() => getData(currentCustomer.id))
       })
     }
   },

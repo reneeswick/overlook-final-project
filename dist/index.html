@@ -10,8 +10,16 @@
   <body>
     <header>
       <!-- <img src= "/images/overlook_logo.png" alt= "a stylish white O" class= "logo"> -->
+      <form class= "login-form">
+        <label for= "username"> Username </label>
+        <input class= "user-login" id="userNameInput" type= "text">
+        <label for= "password"> Password </label>
+        <input class= "user-login" id="userPasswordInput" type= "text">
+        <input class= "login-btn" id= "loginBtn" type= "submit" value= "Login to account">
+      </form>
       <section class= "username" id= "username"> Username </section>
     </header>
+    <section class="hidden popup-message" id="popupMsg"> ERROR </section>
     <section class= "navigation-container" role= "region">
       <nav>
         <button type= "button" name= "Home" class= "navBtn" id= "homeBtn"> Home </button>
@@ -24,7 +32,6 @@
         <h1 class= "page-title" id= "pageTitle">
           Welcome to The Overlook
         </h1>
-        <section class="hidden popup-message" id="popupMsg"></section>
         <section class= "home-view" id= "homeView">
           <p1 class= "subtitle"> Book your stay </p1>
           <section class= "calender-view">

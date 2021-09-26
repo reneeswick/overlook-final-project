@@ -1,8 +1,8 @@
 import domUpdates from './domUpdates.js';
-import {getData} from './scripts.js';
+import {getData, currentCustomer} from './scripts.js';
 
-export function fetchSingleCustomerData() {
-  return fetch('http://localhost:3001/api/v1/customers/2')
+export function fetchSingleCustomerData(number) {
+  return fetch(`http://localhost:3001/api/v1/customers/${number}`)
   .then(response => response.json())
   .then(data => data)
   .catch(error => console.warn(error))
@@ -37,7 +37,7 @@ export function bookARoom(userID, bookingDate, roomNumber) {
   .then(data => data)
   // .then(data => console.log(data))
   .catch(err => mainContentContainer.innerText = `We're sorry: ${err}`)
-  .then(() => getData())
+  .then(() => getData(currentCustomer.id))
 }
 
 export function cancelRoom(bookingsID) {
@@ -51,6 +51,13 @@ export function cancelRoom(bookingsID) {
   .then(data => data)
   // .then(data => console.log(data))
   .catch(error => mainContentContainer.innerText = `We're sorry: ${err}`)
-  .then(() => getData())
+  .then(() => getData(currentCustomer.id))
   .then(() => domUpdates.showUpcomingTrips())
+}
+
+export function fetchAllUserData() {
+  return fetch('http://localhost:3001/api/v1/customers')
+    .then(response => response.json())
+    .then(data => data)
+    .catch(error => console.log(error))
 }
