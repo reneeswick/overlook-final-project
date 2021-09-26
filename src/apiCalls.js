@@ -35,7 +35,6 @@ export function bookARoom(userID, bookingDate, roomNumber) {
   })
   .then(response => response.json())
   .then(data => data)
-  // .then(data => console.log(data))
   .catch(err => mainContentContainer.innerText = `We're sorry: ${err}`)
   .then(() => getData(currentCustomer.id))
 }
@@ -49,7 +48,6 @@ export function cancelRoom(bookingsID) {
   })
   .then(response => response.json())
   .then(data => data)
-  // .then(data => console.log(data))
   .catch(error => mainContentContainer.innerText = `We're sorry: ${err}`)
   .then(() => getData(currentCustomer.id))
   .then(() => domUpdates.showUpcomingTrips())

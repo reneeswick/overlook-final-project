@@ -134,7 +134,6 @@ let domUpdates = {
 
   showBookingsConfirmation(event) {
     currentCustomer.bookingDates = []
-    currentCustomer.confirmation = null;
     let userID = currentCustomer.id;
     let roomNumber = parseInt(event.target.id);
     if(event.target.className === 'book-now') {
@@ -144,7 +143,6 @@ let domUpdates = {
         .then(() => selectedRoomContainer.innerHTML =
           `<section class= "confirmation">
             <p1> Congratulations! Your booking was successful for ${currentCustomer.name}</p1>
-            <p2> Dates of stay: ${currentCustomer.checkInDate} to ${currentCustomer.checkOutDate} </p2>
           </section>`)
           .then(() => getData(currentCustomer.id))
       })
@@ -152,7 +150,6 @@ let domUpdates = {
   },
 
   cancelBooking(event) {
-    // console.log(event)
     if(event.target.className === 'cancel') {
       let bookingsID = parseInt(event.target.id)
       cancelRoom(bookingsID)
