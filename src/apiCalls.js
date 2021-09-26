@@ -1,3 +1,6 @@
+import domUpdates from './domUpdates.js';
+import {getData} from './scripts.js';
+
 export function fetchSingleCustomerData() {
   return fetch('http://localhost:3001/api/v1/customers/2')
   .then(response => response.json())
@@ -20,4 +23,34 @@ export function fetchRoomsData() {
   .then(data => data)
   .catch(error => console.warn(error))
   .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
+}
+
+export function bookARoom(userID, bookingDate, roomNumber) {
+  return fetch('http://localhost:3001/api/v1/bookings', {
+    method: 'POST',
+    body: JSON.stringify({ "userID": userID, "date": bookingDate, "roomNumber": roomNumber}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => data)
+  // .then(data => console.log(data))
+  .catch(err => mainContentContainer.innerText = `We're sorry: ${err}`)
+  .then(() => getData())
+}
+
+export function cancelRoom(bookingsID) {
+  return fetch(`http://localhost:3001/api/v1/bookings/${bookingsID}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => data)
+  // .then(data => console.log(data))
+  .catch(error => mainContentContainer.innerText = `We're sorry: ${err}`)
+  .then(() => getData())
+  .then(() => domUpdates.showUpcomingTrips())
 }

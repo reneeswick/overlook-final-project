@@ -24,21 +24,31 @@
         <h1 class= "page-title" id= "pageTitle">
           Welcome to The Overlook
         </h1>
+        <section class="hidden popup-message" id="popupMsg"></section>
         <section class= "home-view" id= "homeView">
           <p1 class= "subtitle"> Book your stay </p1>
           <section class= "calender-view">
             <label for= "check in"> Check In </label>
-            <input class= "calendar" type="date" class= "date-picker" id= "checkIn">
+            <input class= "calendar" type="date" class= "date-picker" id= "checkInDate">
             <label for= "check out"> Check Out </label>
-            <input class= "calendar" type="date" class= "date-picker" id= "checkOut">
-            <input class= "availabilityBtn" type= "submit" value= "See what's available">
+            <input class= "calendar" type="date" class= "date-picker" id= "checkOutDate">
+            <label for= "room types"> Select a Room Type </label>
+            <select class= "room-types" id= "roomTypes" name= "room types">
+              <option value= "all"> All Room Types </option>
+              <option value= "residential suite"> Residential Suite </option>
+              <option value= "suite"> Suite </option>
+              <option value= "junior suite"> Junior Suite </option>
+              <option value= "single room"> Single Room </option>
+            </select>
+            <input class= "availability-btn" id= "availabilityBtn" type= "submit" value= "See what's available">
           </section>
-          <section class= "hidden available-rooms-container">
-            <!-- MINI-CARDS OF AVAILABLE ROOMS -->
+          <section class= "hidden available-rooms-view" id= "availableRoomsView">
+            <section class= "available-rooms-card-container" id= "availableRoomsCardContainer">
+            </section>
           </section>
         </section>
-        <section class= "hidden selected-room-view">
-          <section class= "hidden selected-room-container">
+        <section class= "hidden selected-room-view" id= "selectedRoomView">
+          <section class= "hidden selected-room-container" id= "selectedRoomContainer">
             <!-- FULL VIEW OF SELECTED ROOM -->
           </section>
           <button type= "button" name= "book now" class= "hidden book-now-btn"> Book Now
