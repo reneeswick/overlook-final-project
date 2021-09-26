@@ -21,6 +21,7 @@ export const pastTripsBtn = document.querySelector('#pastTripsBtn');
 export const availabilityBtn = document.querySelector('#availabilityBtn');
 ///////// QUERY SELECTORS /////////////////////
 const pageTitle = document.querySelector('.page-title');
+const popupMsg = document.querySelector('#popupMsg');
 const mainContentContainer = document.querySelector('#mainContentContainer');
 const homeView = document.querySelector('#homeView');
 const upcomingTripsView = document.querySelector('#upcomingTripsView');

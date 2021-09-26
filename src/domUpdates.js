@@ -157,7 +157,7 @@ let domUpdates = {
       let bookingsID = parseInt(event.target.id)
       cancelRoom(bookingsID)
     }
-  }
+  },
 }
 
 export default domUpdates;
