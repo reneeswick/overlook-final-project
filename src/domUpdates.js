@@ -63,6 +63,7 @@ let domUpdates = {
           `<section class= "mini-card" aria-label= "rooms in your upcoming trips">
           <p1> Date: ${trip.date} </p1>
           <p2>Room Number: ${trip.roomNumber}</p2>
+          <img class= "mini-card-room-image" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIDGYFO3l7DMUeTZ0PPaeJ6_DwBqg1-HqmvSXu64PCJ8e9qjeF9TgdUmkefglMBSIOctc&usqp=CAU" alt= "Night view of the Northern Lights through room's dome">
           <button type= "button" name= "cancel" class= "cancel" id= "${trip.id}">
           Cancel
           </button>
@@ -133,6 +134,7 @@ let domUpdates = {
   },
 
   showRoomDetails(event) {
+    console.log(event)
     domUpdates.show(selectedRoomView);
     domUpdates.show(selectedRoomContainer);
     domUpdates.hide(availableRoomsView);
@@ -147,7 +149,12 @@ let domUpdates = {
         <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
         Book Now
         </button>
-        <img src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
+        <section class= "selected-room-container">
+        <img class= "selected-room-img" src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
+        <img class= "selected-room-img" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmpgE-qOLepMSLWHnLWe1Qzpa1FQdm9J9uKRLdvyHzKu45dH8bfVaXudUEsTaCJkpdiw&usqp=CAU" alt= "An adventerous room with a domed roof at dusk">
+        <img class= "selected-room-img" src= "https://inhabitat.com/wp-content/blogs.dir/1/files/2011/10/hotel-kakslauttanen-igloo-village-lead.jpg" alt= "A birds-eye-view of the hotel globes at night">
+        <img class= "selected-room-img" src= "https://i.pinimg.com/originals/d9/05/1d/d9051d1fc4d750c7467790a019058dd8.jpg" alt= "An adventerous full room view at night">
+        </section>
         <p1> ${selectedRoom.bedSize} </p1>
         <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
         <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>

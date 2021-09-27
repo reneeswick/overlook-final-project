@@ -149,7 +149,6 @@ nav {
 .available-rooms-view,
 .home-view
 .selected-room {
-  // border: yellow solid 2px;
   min-height: 80vh;
   min-width: 80vh;
 }
@@ -160,6 +159,13 @@ nav {
   align-content: center;
   min-height: 80vh;
   background-color: white;
+  font-size: 14pt;
+  color: #676099;
+}
+
+.selected-room-img {
+  object-fit: contain;
+  width: 24%;
 }
 
 .calender-view {
@@ -177,21 +183,26 @@ nav {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 5px;
   row-gap: 5px;
-  // border: red solid 2px;
 }
 
 .mini-card,
 .room-mini-card {
   background-color: white;
   opacity: 0.7;
-  height: 20vh;
-  font-size: 12pt;
+  color: #676099;
+  font-size: 16pt;
   cursor: pointer;
 }
 
 .mini-card:hover,
 .room-mini-card:hover {
   opacity: 1;
+}
+
+.mini-card-room-image {
+  object-fit: contain;
+  width: 25%;
+  // height: 100%;
 }
 
 .total-spent {
