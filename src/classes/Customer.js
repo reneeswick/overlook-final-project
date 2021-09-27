@@ -66,31 +66,32 @@ class Customer {
   };
 
   setBookingDates(checkIn, checkOut) {
-    this.bookingDates.push(checkIn, checkOut)
+    this.bookingDates.push(checkIn)
     let checkInDate = new Date(checkIn)
     let checkOutDate = new Date(checkOut)
     let dateDiff = checkOutDate.getDate() - checkInDate.getDate()
-    // console.log(new Date(checkInDate.setDate(checkInDate.getDate() + 1)))
     let date = checkInDate.getDate()
     let additionalDates = [];
-    if(dateDiff >= 2 && !additionalDates.includes(checkOut)) {
-      date = date + 1
-      date = new Date(checkInDate.setDate(date))
-      let month = date.getMonth() + 1
-      if(month < 10) {
-        month = `0${month}`
+    if(dateDiff > 1) {
+      while(additionalDates.length < (dateDiff - 1)) {
+        date = date + 1
+        let additionalDate = new Date(checkInDate.setDate(date))
+        let month = additionalDate.getMonth() + 1
+        if(month < 10) {
+          month = `0${month}`
+        }
+        let newDate = additionalDate.getDate()
+        if(newDate < 10) {
+          newDate = `0${newDate}`
+        }
+        let bookingDate = `${additionalDate.getFullYear()}/${month}/${newDate}`
+        additionalDates.push(bookingDate)
       }
-      let fullDate = date.getDate()
-      if(fullDate < 10) {
-        fullDate = `0${fullDate}`
-      }
-      date = `${date.getFullYear()}/${month}/${fullDate}`
-      additionalDates.push(date)
+      additionalDates.map((date) => {
+        this.bookingDates.push(date)
+      })
     }
-    additionalDates.map((date) => {
-      this.bookingDates.push(date)
-    })
-  };
+  }
 }
 
 export default Customer;
