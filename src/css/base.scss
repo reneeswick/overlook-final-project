@@ -132,9 +132,15 @@ nav {
   background-size: contain;
 }
 
-.subtitle {
+.subtitle,
+.confirmation {
   color: #676099;
   font-size: 20pt;
+}
+
+.confirmation {
+  display: flex;
+  background-color: white;
 }
 
 .past-trips-view,

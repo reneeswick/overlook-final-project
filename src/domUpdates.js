@@ -17,10 +17,12 @@ let domUpdates = {
   showHomeView() {
     if(currentCustomer === undefined) {
       domUpdates.show(loginPrompt);
+      domUpdates.show(loginForm);
       domUpdates.popUpError('Login first to book your stay')
     } else {
       domUpdates.show(homeView);
-      domUpdates.hide(loginPrompt)
+      domUpdates.hide(loginPrompt);
+      domUpdates.hide(loginForm);
       domUpdates.hide(pastTripsView);
       domUpdates.hide(pastTripsCardContainer);
       domUpdates.hide(upcomingTripsView);
@@ -160,7 +162,7 @@ let domUpdates = {
         bookARoom(userID, date, roomNumber)
         .then(() => selectedRoomContainer.innerHTML =
           `<section class= "confirmation" aria-label= "confirmation">
-            <p1> Congratulations! Your booking was successful for ${currentCustomer.name}</p1>
+            <p1> Congratulations! Your booking for ${currentCustomer.name} was successful</p1>
           </section>`)
           .then(() => getData(currentCustomer.id))
       })
