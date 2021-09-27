@@ -120,8 +120,7 @@ let domUpdates = {
         </section>`
     } else {
       let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
-        acc +=
-        `<section class= "room-mini-card" id= "${room.number}" aria-label= "available rooms">
+        acc += `<section class= "room-mini-card" id= "${room.number}" aria-label= "available rooms">
         <p1> Room Type: ${room.roomType}</p1>
         <p2> Bed Size: ${room.bedSize}</p2>
         <p3> Number of Bed: ${room.numBeds}</p3>
@@ -141,25 +140,25 @@ let domUpdates = {
     domUpdates.hide(availableRoomsCardContainer);
     domUpdates.hide(homeView);
     let selectedRoom = currentCustomer.hotel.rooms.rooms.find((room) => {
-      return room.number === parseInt(event.target.id)
+      return room.number === parseInt(event.target.closest('.room-mini-card').id)
     })
     selectedRoomContainer.innerHTML = ""
     selectedRoomContainer.innerHTML =
       `<section class= "selected-room" aria-label= "selected room">
-        <h2> ${selectedRoom.roomType} </h2>
-        <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
-        Book Now
-        </button>
-        <section class= "selected-room-container">
+      <h2> ${selectedRoom.roomType} </h2>
+      <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
+      Book Now
+      </button>
+      <section class= "selected-room-container">
         <img class= "selected-room-img" src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
         <img class= "selected-room-img" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmpgE-qOLepMSLWHnLWe1Qzpa1FQdm9J9uKRLdvyHzKu45dH8bfVaXudUEsTaCJkpdiw&usqp=CAU" alt= "An adventerous room with a domed roof at dusk">
         <img class= "selected-room-img" src= "https://inhabitat.com/wp-content/blogs.dir/1/files/2011/10/hotel-kakslauttanen-igloo-village-lead.jpg" alt= "A birds-eye-view of the hotel globes at night">
         <img class= "selected-room-img" src= "https://i.pinimg.com/originals/d9/05/1d/d9051d1fc4d750c7467790a019058dd8.jpg" alt= "An adventerous full room view at night">
-        </section>
-        <p1> ${selectedRoom.bedSize} </p1>
-        <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
-        <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
-        <p4> $${selectedRoom.costPerNight}/night</p4>
+      </section>
+      <p1> ${selectedRoom.bedSize} </p1>
+      <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
+      <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
+      <p4> $${selectedRoom.costPerNight}/night</p4>
       </section>`
   },
 
