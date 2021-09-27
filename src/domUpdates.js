@@ -95,6 +95,7 @@ let domUpdates = {
         `<section class= "mini-card" aria-label= "rooms in your past trips">
         <p1> Date: ${trip.date} </p1>
         <p2>Room Number: ${trip.roomNumber}</p2>
+        <img class= "mini-card-room-image" src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "Morning view of the Northern Lights through room's dome">
         </section>`
         return acc
       }, '')
