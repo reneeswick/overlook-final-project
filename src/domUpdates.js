@@ -139,6 +139,7 @@ let domUpdates = {
         <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
         Book Now
         </button>
+        <img src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
         <p1> ${selectedRoom.bedSize} </p1>
         <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
         <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
