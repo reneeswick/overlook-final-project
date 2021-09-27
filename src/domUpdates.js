@@ -53,7 +53,10 @@ let domUpdates = {
       pageTitle.innerText= 'Upcoming Trips';
       currentCustomer.viewUpcomingTrips();
       if(currentCustomer.upcomingTrips.length === 0) {
-        upcomingTripsCardContainer.innerHTML = `<p>You have no upcoming trips.</p>`
+        upcomingTripsCardContainer.innerHTML =
+        `<section class= "confirmation" aria-label= "No upcoming trips">
+        <p>Visit our home page to plan your next trip!</p>
+        </section>`
       } else {
         let upcomingTripsMiniCards = currentCustomer.upcomingTrips.reduce((acc, trip) => {
           acc +=
