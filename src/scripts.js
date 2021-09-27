@@ -41,6 +41,7 @@ const userNameInput = document.querySelector('#userNameInput');
 const userPasswordInput = document.querySelector('#userPasswordInput');
 const loginBtn = document.querySelector('#loginBtn');
 const loginPrompt = document.querySelector('#loginPrompt');
+const loginForm = document.querySelector('#loginForm');
 
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
