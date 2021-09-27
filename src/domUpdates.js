@@ -53,7 +53,7 @@ let domUpdates = {
       } else {
         let upcomingTripsMiniCards = currentCustomer.upcomingTrips.reduce((acc, trip) => {
           acc +=
-          `<section class= "mini-card">
+          `<section class= "mini-card" aria-label= "rooms in your upcoming trips">
           <p1> Date: ${trip.date} </p1>
           <p2>Room Number: ${trip.roomNumber}</p2>
           <button type= "button" name= "cancel" class= "cancel" id= "${trip.id}">
@@ -83,7 +83,7 @@ let domUpdates = {
       pageTitle.innerText= 'Past Trips';
       let pastTripMiniCards = currentCustomer.pastTrips.reduce((acc, trip) => {
         acc +=
-        `<section class= "mini-card">
+        `<section class= "mini-card" aria-label= "rooms in your past trips">
         <p1> Date: ${trip.date} </p1>
         <p2>Room Number: ${trip.roomNumber}</p2>
         </section>`
@@ -111,7 +111,7 @@ let domUpdates = {
     } else {
       let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
         acc +=
-        `<section class= "room-mini-card" id= "${room.number}">
+        `<section class= "room-mini-card" id= "${room.number}" aria-label= "available rooms">
         <p1> Room Type: ${room.roomType}</p1>
         <p2> Bed Size: ${room.bedSize}</p2>
         <p3> Number of Bed: ${room.numBeds}</p3>
@@ -134,7 +134,7 @@ let domUpdates = {
       return room.number === parseInt(event.target.id)
     })
     selectedRoomContainer.innerHTML =
-      `<section class= "selected-room">
+      `<section class= "selected-room" aria-label= "selected room">
         <h2> ${selectedRoom.roomType} </h2>
         <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
         Book Now
@@ -156,7 +156,7 @@ let domUpdates = {
       currentCustomer.bookingDates.map((date) => {
         bookARoom(userID, date, roomNumber)
         .then(() => selectedRoomContainer.innerHTML =
-          `<section class= "confirmation">
+          `<section class= "confirmation" aria-label= "confirmation">
             <p1> Congratulations! Your booking was successful for ${currentCustomer.name}</p1>
           </section>`)
           .then(() => getData(currentCustomer.id))
