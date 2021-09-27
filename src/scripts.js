@@ -4,7 +4,7 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
 import domUpdates from './domUpdates.js';
-import {fetchSingleCustomerData, fetchBookingsData, fetchRoomsData} from './apiCalls.js';
+import {fetchSingleCustomerData, fetchBookingsData, fetchRoomsData, fetchAllUserData} from './apiCalls.js';
 import Customer from './classes/Customer.js';
 import Hotel from './classes/Hotel.js'
 
@@ -37,7 +37,10 @@ const username = document.querySelector('#username');
 const checkInDate = document.querySelector('#checkInDate');
 const checkOutDate = document.querySelector('#checkOutDate');
 const roomType = document.querySelector('#roomTypes');
-
+const userNameInput = document.querySelector('#userNameInput');
+const userPasswordInput = document.querySelector('#userPasswordInput');
+const loginBtn = document.querySelector('#loginBtn');
+// const popupMsg = document.querySelector('#popupMsg');
 
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
@@ -47,11 +50,11 @@ availabilityBtn.addEventListener('click', domUpdates.showAvailableRooms);
 availableRoomsCardContainer.addEventListener('click', domUpdates.showRoomDetails);
 selectedRoomContainer.addEventListener('click', domUpdates.showBookingsConfirmation);
 upcomingTripsCardContainer.addEventListener('click', domUpdates.cancelBooking);
-window.addEventListener('load', getData);
+loginBtn.addEventListener('click', authenticateUser);
 
 ////////// FUNCTIONS ////////////////
-export function getData() {
-  return Promise.all([fetchSingleCustomerData(),fetchBookingsData(),fetchRoomsData()])
+export function getData(number) {
+  return Promise.all([fetchSingleCustomerData(number),fetchBookingsData(),fetchRoomsData()])
   .then(data => organizeFetchedData(data))
   .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
   .then(() => domUpdates.displayUsername())
@@ -81,4 +84,31 @@ export function checkAvailability() {
     availableRooms = currentCustomer.hotel.filterByRoomType(roomType, currentCustomer.checkInDate, currentCustomer.checkOutDate)
   }
   return availableRooms;
+};
+
+function authenticateUser(event) {
+  event.preventDefault()
+  let username = (userNameInput.value).split('customer')[1]
+  let password = userPasswordInput.value
+  let allCustomers;
+  let customerInfo;
+  let userID;
+  if(password === 'overlook2021'){
+    let customerData = fetchAllUserData()
+    .then(data => allCustomers = data)
+    .then(() => customerInfo = allCustomers.customers.find((customer) => {
+      return customer.id === parseInt(username)
+    }))
+    .then(() => userID = customerInfo.id.toString())
+    .catch(error => popUpError('Username is incorrect.'))
+    .then(() => getData(userID))
+  } else {
+    popUpError('Password is incorrect.');
+  }
+};
+
+function popUpError(message) {
+  domUpdates.show(popupMsg)
+  popupMsg.innerText = message
+  setTimeout(() => {domUpdates.hide(popupMsg)}, 2000)
 };
