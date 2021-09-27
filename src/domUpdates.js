@@ -95,7 +95,7 @@ let domUpdates = {
 
   showTotalSpent() {
     let total = currentCustomer.calculateTotalSpent();
-    totalSpent.innerText = total;
+    totalSpent.innerText = `Total Spent: ${total}`;
   },
 
   showAvailableRooms() {
