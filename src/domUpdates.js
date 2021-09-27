@@ -112,6 +112,7 @@ let domUpdates = {
     domUpdates.show(availableRoomsCardContainer);
     let availableRooms = checkAvailability();
     if(availableRooms.length === 0) {
+      availableRoomsCardContainer.innerHTML= "";
       availableRoomsCardContainer.innerHTML =
         `<section>
           <p1>We're sorry, there are currently no rooms available that meet your search.</p1>
@@ -134,7 +135,6 @@ let domUpdates = {
   },
 
   showRoomDetails(event) {
-    console.log(event)
     domUpdates.show(selectedRoomView);
     domUpdates.show(selectedRoomContainer);
     domUpdates.hide(availableRoomsView);
@@ -143,6 +143,7 @@ let domUpdates = {
     let selectedRoom = currentCustomer.hotel.rooms.rooms.find((room) => {
       return room.number === parseInt(event.target.id)
     })
+    selectedRoomContainer.innerHTML = ""
     selectedRoomContainer.innerHTML =
       `<section class= "selected-room" aria-label= "selected room">
         <h2> ${selectedRoom.roomType} </h2>
