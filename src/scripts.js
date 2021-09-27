@@ -40,7 +40,7 @@ const roomType = document.querySelector('#roomTypes');
 const userNameInput = document.querySelector('#userNameInput');
 const userPasswordInput = document.querySelector('#userPasswordInput');
 const loginBtn = document.querySelector('#loginBtn');
-// const popupMsg = document.querySelector('#popupMsg');
+const loginPrompt = document.querySelector('#loginPrompt');
 
 ////////// EVENT LISTENERS //////////////
 homeBtn.addEventListener('click', domUpdates.showHomeView);
@@ -100,15 +100,10 @@ function authenticateUser(event) {
       return customer.id === parseInt(username)
     }))
     .then(() => userID = customerInfo.id.toString())
-    .catch(error => popUpError('Username is incorrect.'))
+    .catch(error => domUpdates.popUpError('Username is incorrect.'))
     .then(() => getData(userID))
+    .then(() => domUpdates.showHomeView())
   } else {
-    popUpError('Password is incorrect.');
+    domUpdates.popUpError('Password is incorrect.');
   }
-};
-
-function popUpError(message) {
-  domUpdates.show(popupMsg)
-  popupMsg.innerText = message
-  setTimeout(() => {domUpdates.hide(popupMsg)}, 2000)
 };

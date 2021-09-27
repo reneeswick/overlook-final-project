@@ -114,12 +114,22 @@ nav {
   color: #FFB611;
 }
 
+.login-btn,
+.availability-btn,
+.book-now,
+.cancel {
+  background-color: #ffb611;
+}
+
 .navigation-container {
   display: flex;
   height: 172px;
   flex-direction: column;
   justify-content: flex-end;
   border-bottom: #BD243E solid 5px;
+  background-image: url(https://cdn.dribbble.com/users/4993316/screenshots/14396330/overlook_logo_large.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .subtitle {
@@ -132,8 +142,17 @@ nav {
 .available-rooms-view,
 .home-view
 .selected-room {
-  border: yellow solid 2px;
+  // border: yellow solid 2px;
   min-height: 80vh;
+  min-width: 80vh;
+}
+
+.selected-room {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  min-height: 80vh;
+  background-color: white;
 }
 
 .calender-view {
@@ -151,7 +170,7 @@ nav {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 5px;
   row-gap: 5px;
-  border: red solid 2px;
+  // border: red solid 2px;
 }
 
 .mini-card,

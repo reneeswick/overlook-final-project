@@ -15,15 +15,21 @@ let domUpdates = {
   },
 
   showHomeView() {
-    domUpdates.show(homeView);
-    domUpdates.hide(pastTripsView);
-    domUpdates.hide(pastTripsCardContainer);
-    domUpdates.hide(upcomingTripsView);
-    domUpdates.hide(upcomingTripsCardContainer);
-    domUpdates.hide(totalSpent);
-    domUpdates.hide(availableRoomsView);
-    domUpdates.hide(availableRoomsCardContainer);
-    pageTitle.innerText= 'Welcome to The Overlook';
+    if(currentCustomer === undefined) {
+      domUpdates.show(loginPrompt);
+      domUpdates.popUpError('Login first to book your stay')
+    } else {
+      domUpdates.show(homeView);
+      domUpdates.hide(loginPrompt)
+      domUpdates.hide(pastTripsView);
+      domUpdates.hide(pastTripsCardContainer);
+      domUpdates.hide(upcomingTripsView);
+      domUpdates.hide(upcomingTripsCardContainer);
+      domUpdates.hide(totalSpent);
+      domUpdates.hide(availableRoomsView);
+      domUpdates.hide(availableRoomsCardContainer);
+      pageTitle.innerText= 'Welcome to The Overlook';
+    }
   },
 
   displayUsername() {
@@ -31,52 +37,60 @@ let domUpdates = {
   },
 
   showUpcomingTrips() {
-    domUpdates.show(upcomingTripsView);
-    domUpdates.show(upcomingTripsCardContainer);
-    domUpdates.hide(homeView);
-    domUpdates.hide(pastTripsView);
-    domUpdates.hide(pastTripsCardContainer);
-    domUpdates.hide(totalSpent);
-    pageTitle.innerText= 'Upcoming Trips';
-    currentCustomer.viewUpcomingTrips();
-    if(currentCustomer.upcomingTrips.length === 0) {
-      upcomingTripsCardContainer.innerHTML = `<p>You have no upcoming trips.</p>`
+    if(currentCustomer === undefined) {
+      domUpdates.popUpError('Login to view upcoming trips')
     } else {
-      let upcomingTripsMiniCards = currentCustomer.upcomingTrips.reduce((acc, trip) => {
-        acc +=
-        `<section class= "mini-card">
+      domUpdates.show(upcomingTripsView);
+      domUpdates.show(upcomingTripsCardContainer);
+      domUpdates.hide(homeView);
+      domUpdates.hide(pastTripsView);
+      domUpdates.hide(pastTripsCardContainer);
+      domUpdates.hide(totalSpent);
+      pageTitle.innerText= 'Upcoming Trips';
+      currentCustomer.viewUpcomingTrips();
+      if(currentCustomer.upcomingTrips.length === 0) {
+        upcomingTripsCardContainer.innerHTML = `<p>You have no upcoming trips.</p>`
+      } else {
+        let upcomingTripsMiniCards = currentCustomer.upcomingTrips.reduce((acc, trip) => {
+          acc +=
+          `<section class= "mini-card">
           <p1> Date: ${trip.date} </p1>
           <p2>Room Number: ${trip.roomNumber}</p2>
           <button type= "button" name= "cancel" class= "cancel" id= "${trip.id}">
           Cancel
           </button>
-        </section>`
-        return acc
-      }, '')
-      upcomingTripsCardContainer.innerHTML = upcomingTripsMiniCards;
+          </section>`
+          return acc
+        }, '')
+        upcomingTripsCardContainer.innerHTML = upcomingTripsMiniCards;
+      }
     }
   },
 
   showPastTrips() {
-    domUpdates.show(pastTripsView);
-    domUpdates.show(pastTripsCardContainer);
-    domUpdates.show(totalSpent);
-    domUpdates.hide(homeView);
-    domUpdates.hide(upcomingTripsView);
-    domUpdates.hide(upcomingTripsCardContainer);
-    getData(currentCustomer.id);
-    currentCustomer.viewPastTrips();
-    domUpdates.showTotalSpent();
-    pageTitle.innerText= 'Past Trips';
-    let pastTripMiniCards = currentCustomer.pastTrips.reduce((acc, trip) => {
-      acc +=
-      `<section class= "mini-card">
+    if(currentCustomer === undefined) {
+      domUpdates.popUpError('Login to book your past trips')
+    } else {
+      domUpdates.show(pastTripsView);
+      domUpdates.show(pastTripsCardContainer);
+      domUpdates.show(totalSpent);
+      domUpdates.hide(homeView);
+      domUpdates.hide(upcomingTripsView);
+      domUpdates.hide(upcomingTripsCardContainer);
+      getData(currentCustomer.id);
+      currentCustomer.viewPastTrips();
+      domUpdates.showTotalSpent();
+      pageTitle.innerText= 'Past Trips';
+      let pastTripMiniCards = currentCustomer.pastTrips.reduce((acc, trip) => {
+        acc +=
+        `<section class= "mini-card">
         <p1> Date: ${trip.date} </p1>
         <p2>Room Number: ${trip.roomNumber}</p2>
-      </section>`
-      return acc
-    }, '')
-    pastTripsCardContainer.innerHTML = pastTripMiniCards
+        </section>`
+        return acc
+      }, '')
+      pastTripsCardContainer.innerHTML = pastTripMiniCards
+    }
   },
 
   showTotalSpent() {
@@ -125,6 +139,7 @@ let domUpdates = {
         <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
         Book Now
         </button>
+        <img src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
         <p1> ${selectedRoom.bedSize} </p1>
         <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
         <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
@@ -155,6 +170,12 @@ let domUpdates = {
       cancelRoom(bookingsID)
     }
   },
+
+  popUpError(message) {
+    domUpdates.show(popupMsg)
+    popupMsg.innerText = message
+    setTimeout(() => {domUpdates.hide(popupMsg)}, 2000)
+  }
 }
 
 export default domUpdates;
