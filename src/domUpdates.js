@@ -28,6 +28,7 @@ let domUpdates = {
       domUpdates.hide(totalSpent);
       domUpdates.hide(availableRoomsView);
       domUpdates.hide(availableRoomsCardContainer);
+      domUpdates.hide(selectedRoomContainer);
       pageTitle.innerText= 'Welcome to The Overlook';
     }
   },
@@ -46,6 +47,7 @@ let domUpdates = {
       domUpdates.hide(pastTripsView);
       domUpdates.hide(pastTripsCardContainer);
       domUpdates.hide(totalSpent);
+      domUpdates.hide(selectedRoomContainer);
       pageTitle.innerText= 'Upcoming Trips';
       currentCustomer.viewUpcomingTrips();
       if(currentCustomer.upcomingTrips.length === 0) {
@@ -77,6 +79,7 @@ let domUpdates = {
       domUpdates.hide(homeView);
       domUpdates.hide(upcomingTripsView);
       domUpdates.hide(upcomingTripsCardContainer);
+      domUpdates.hide(selectedRoomContainer);
       getData(currentCustomer.id);
       currentCustomer.viewPastTrips();
       domUpdates.showTotalSpent();
