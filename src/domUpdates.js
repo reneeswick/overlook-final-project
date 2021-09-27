@@ -172,6 +172,7 @@ let domUpdates = {
   },
 
   popUpError(message) {
+    event.target.ariaHasPopup = true;
     domUpdates.show(popupMsg)
     popupMsg.innerText = message
     setTimeout(() => {domUpdates.hide(popupMsg)}, 2000)

@@ -9,15 +9,15 @@
   <body>
     <header>
       <form class= "login-form" name="login form">
-        <label for= "username"> Username </label>
+        <label for= "username" aria-labelledby= "username"> Username </label>
         <input class= "user-login" id="userNameInput" type= "text">
-        <label for= "password"> Password </label>
+        <label for= "password" aria-labelledby= "password"> Password </label>
         <input class= "user-login" id="userPasswordInput" type= "text">
-        <input class= "login-btn" id= "loginBtn" type= "submit" value= "Login to account">
+        <input class= "login-btn" id= "loginBtn" type= "submit" value= "Login to account" aria-labelledby= "Login to account">
       </form>
-      <section class= "username" id= "username"> Username </section>
+      <section class= "username" id= "username" aria-label= "username display"> Username </section>
     </header>
-    <section class="hidden popup-message" id="popupMsg"> ERROR </section>
+    <section class="hidden popup-message" id="popupMsg" role= "dialog" aria-haspopup= "dialog"> ERROR </section>
     <section class= "navigation-container" role= "region">
       <nav>
         <button type= "button" name= "Home" class= "navBtn" id= "homeBtn"> Home </button>
@@ -34,12 +34,12 @@
         <section class= "hidden home-view" id= "homeView">
           <p1 class= "subtitle"> Book your stay </p1>
           <section class= "calender-view">
-            <label for= "check in"> Check In </label>
-            <input class= "calendar" type="date" class= "date-picker" id= "checkInDate">
-            <label for= "check out"> Check Out </label>
-            <input class= "calendar" type="date" class= "date-picker" id= "checkOutDate">
-            <label for= "room types"> Select a Room Type </label>
-            <select class= "room-types" id= "roomTypes" name= "room types">
+            <label for= "check in" aria-labelledby= "Check in"> Check In </label>
+            <input class= "calendar" type="date" class= "date-picker" id= "checkInDate" aria-label= "checkin date picker">
+            <label for= "check out" aria-labelledby= "Check out"> Check Out </label>
+            <input class= "calendar" type="date" class= "date-picker" id= "checkOutDate" aria-label= "checkin date picker">
+            <label for= "room types" aria-labelledby= "Room type selection"> Select a Room Type </label>
+            <select class= "room-types" id= "roomTypes" name= "room types" aria-label= "select room types">
               <option value= "all"> All Room Types </option>
               <option value= "residential suite"> Residential Suite </option>
               <option value= "suite"> Suite </option>
