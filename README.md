@@ -1,4 +1,4 @@
-# Title
+# The Overlook Hotel
 Mod 2 + The Overlook Hotel 
 
 ## Table of Contents
