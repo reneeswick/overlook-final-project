@@ -53,13 +53,17 @@ let domUpdates = {
       pageTitle.innerText= 'Upcoming Trips';
       currentCustomer.viewUpcomingTrips();
       if(currentCustomer.upcomingTrips.length === 0) {
-        upcomingTripsCardContainer.innerHTML = `<p>You have no upcoming trips.</p>`
+        upcomingTripsCardContainer.innerHTML =
+        `<section class= "confirmation" aria-label= "No upcoming trips">
+        <p>Visit our home page to plan your next trip!</p>
+        </section>`
       } else {
         let upcomingTripsMiniCards = currentCustomer.upcomingTrips.reduce((acc, trip) => {
           acc +=
           `<section class= "mini-card" aria-label= "rooms in your upcoming trips">
           <p1> Date: ${trip.date} </p1>
-          <p2>Room Number: ${trip.roomNumber}</p2>
+          <p2 class= "room-number">Room Number: ${trip.roomNumber}</p2>
+          <img class= "mini-card-room-image" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIDGYFO3l7DMUeTZ0PPaeJ6_DwBqg1-HqmvSXu64PCJ8e9qjeF9TgdUmkefglMBSIOctc&usqp=CAU" alt= "Night view of the Northern Lights through room's dome">
           <button type= "button" name= "cancel" class= "cancel" id= "${trip.id}">
           Cancel
           </button>
@@ -73,7 +77,7 @@ let domUpdates = {
 
   showPastTrips() {
     if(currentCustomer === undefined) {
-      domUpdates.popUpError('Login to book your past trips')
+      domUpdates.popUpError('Login to view your past trips')
     } else {
       domUpdates.show(pastTripsView);
       domUpdates.show(pastTripsCardContainer);
@@ -90,7 +94,8 @@ let domUpdates = {
         acc +=
         `<section class= "mini-card" aria-label= "rooms in your past trips">
         <p1> Date: ${trip.date} </p1>
-        <p2>Room Number: ${trip.roomNumber}</p2>
+        <p2 class= "room-number">Room Number: ${trip.roomNumber}</p2>
+        <img class= "mini-card-room-image" src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "Morning view of the Northern Lights through room's dome">
         </section>`
         return acc
       }, '')
@@ -104,10 +109,16 @@ let domUpdates = {
   },
 
   showAvailableRooms() {
+    console.log(typeof checkInDate.value)
+    if(checkInDate.value === '' || checkOutDate.value === '') {
+      domUpdates.popUpError('Please select a date')
+      return
+    }
     domUpdates.show(availableRoomsView);
     domUpdates.show(availableRoomsCardContainer);
     let availableRooms = checkAvailability();
     if(availableRooms.length === 0) {
+      availableRoomsCardContainer.innerHTML= "";
       availableRoomsCardContainer.innerHTML =
         `<section>
           <p1>We're sorry, there are currently no rooms available that meet your search.</p1>
@@ -115,13 +126,13 @@ let domUpdates = {
         </section>`
     } else {
       let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
-        acc +=
-        `<section class= "room-mini-card" id= "${room.number}" aria-label= "available rooms">
-        <p1> Room Type: ${room.roomType}</p1>
-        <p2> Bed Size: ${room.bedSize}</p2>
-        <p3> Number of Bed: ${room.numBeds}</p3>
-        <p4> Cost: $${room.costPerNight}</p4>
-        <p5> Per Night </p5>
+        acc += `<section class= "room-mini-card" id= "${room.number}" aria-label= "available rooms">
+        <p1 class= "room-type"> ${room.roomType} </p1>
+        <p2 class= "bed-size"> ${room.bedSize}</p2>
+        <p3 class= "num-beds"> Number of Beds: ${room.numBeds}</p3>
+        <img class= "mini-card-room-image" src= "https://www.pandotrip.com/wp-content/uploads/2017/12/Levin-Iglut-3.jpg" alt="Couple watching northern lights from bed">
+        <p4 class= "cost-display"> Cost: $${room.costPerNight}</p4>
+        <p5 class= "room-number"> Per Night </p5>
         </section>`
         return acc
       }, '')
@@ -136,19 +147,25 @@ let domUpdates = {
     domUpdates.hide(availableRoomsCardContainer);
     domUpdates.hide(homeView);
     let selectedRoom = currentCustomer.hotel.rooms.rooms.find((room) => {
-      return room.number === parseInt(event.target.id)
+      return room.number === parseInt(event.target.closest('.room-mini-card').id)
     })
+    selectedRoomContainer.innerHTML = ""
     selectedRoomContainer.innerHTML =
       `<section class= "selected-room" aria-label= "selected room">
-        <h2> ${selectedRoom.roomType} </h2>
-        <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
-        Book Now
-        </button>
-        <img src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
-        <p1> ${selectedRoom.bedSize} </p1>
-        <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
-        <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
-        <p4> $${selectedRoom.costPerNight}/night</p4>
+      <h2> ${selectedRoom.roomType} </h2>
+      <button type= "button" name= "book now" class= "book-now" id= "${selectedRoom.number}">
+      Book Now
+      </button>
+      <section class= "selected-room-container">
+        <img class= "selected-room-img" src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "An adventerous room with a domed roof">
+        <img class= "selected-room-img" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmpgE-qOLepMSLWHnLWe1Qzpa1FQdm9J9uKRLdvyHzKu45dH8bfVaXudUEsTaCJkpdiw&usqp=CAU" alt= "An adventerous room with a domed roof at dusk">
+        <img class= "selected-room-img" src= "https://inhabitat.com/wp-content/blogs.dir/1/files/2011/10/hotel-kakslauttanen-igloo-village-lead.jpg" alt= "A birds-eye-view of the hotel globes at night">
+        <img class= "selected-room-img" src= "https://i.pinimg.com/originals/d9/05/1d/d9051d1fc4d750c7467790a019058dd8.jpg" alt= "An adventerous full room view at night">
+      </section>
+      <p1> ${selectedRoom.bedSize} </p1>
+      <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
+      <p3> Has a Bidet: ${selectedRoom.bidet} </p3>
+      <p4 class= "cost-display"> $${selectedRoom.costPerNight}/night</p4>
       </section>`
   },
 
