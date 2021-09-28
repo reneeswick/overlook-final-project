@@ -109,7 +109,6 @@ let domUpdates = {
   },
 
   showAvailableRooms() {
-    console.log(typeof checkInDate.value)
     if(checkInDate.value === '' || checkOutDate.value === '') {
       domUpdates.popUpError('Please select a date')
       return

@@ -1,15 +1,9 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+/////// IMPORTS ////////////////////////
 import './css/base.scss';
 import domUpdates from './domUpdates.js';
 import {fetchSingleCustomerData, fetchBookingsData, fetchRoomsData, fetchAllUserData} from './apiCalls.js';
 import Customer from './classes/Customer.js';
 import Hotel from './classes/Hotel.js'
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 
 //////// GLOBAL VARIABLES /////////////
 export let currentCustomer;
