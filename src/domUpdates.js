@@ -62,7 +62,7 @@ let domUpdates = {
           acc +=
           `<section class= "mini-card" aria-label= "rooms in your upcoming trips">
           <p1> Date: ${trip.date} </p1>
-          <p2>Room Number: ${trip.roomNumber}</p2>
+          <p2 class= "room-number">Room Number: ${trip.roomNumber}</p2>
           <img class= "mini-card-room-image" src= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIDGYFO3l7DMUeTZ0PPaeJ6_DwBqg1-HqmvSXu64PCJ8e9qjeF9TgdUmkefglMBSIOctc&usqp=CAU" alt= "Night view of the Northern Lights through room's dome">
           <button type= "button" name= "cancel" class= "cancel" id= "${trip.id}">
           Cancel
@@ -77,7 +77,7 @@ let domUpdates = {
 
   showPastTrips() {
     if(currentCustomer === undefined) {
-      domUpdates.popUpError('Login to book your past trips')
+      domUpdates.popUpError('Login to view your past trips')
     } else {
       domUpdates.show(pastTripsView);
       domUpdates.show(pastTripsCardContainer);
@@ -94,7 +94,7 @@ let domUpdates = {
         acc +=
         `<section class= "mini-card" aria-label= "rooms in your past trips">
         <p1> Date: ${trip.date} </p1>
-        <p2>Room Number: ${trip.roomNumber}</p2>
+        <p2 class= "room-number">Room Number: ${trip.roomNumber}</p2>
         <img class= "mini-card-room-image" src= "https://pbs.twimg.com/media/EqfOJrrXEAEjqQi.jpg" alt= "Morning view of the Northern Lights through room's dome">
         </section>`
         return acc
@@ -109,6 +109,11 @@ let domUpdates = {
   },
 
   showAvailableRooms() {
+    console.log(typeof checkInDate.value)
+    if(checkInDate.value === '' || checkOutDate.value === '') {
+      domUpdates.popUpError('Please select a date')
+      return
+    }
     domUpdates.show(availableRoomsView);
     domUpdates.show(availableRoomsCardContainer);
     let availableRooms = checkAvailability();
@@ -122,11 +127,12 @@ let domUpdates = {
     } else {
       let availableRoomsMiniCards = availableRooms.reduce((acc, room) => {
         acc += `<section class= "room-mini-card" id= "${room.number}" aria-label= "available rooms">
-        <p1> Room Type: ${room.roomType}</p1>
-        <p2> Bed Size: ${room.bedSize}</p2>
-        <p3> Number of Bed: ${room.numBeds}</p3>
-        <p4> Cost: $${room.costPerNight}</p4>
-        <p5> Per Night </p5>
+        <p1 class= "room-type"> ${room.roomType} </p1>
+        <p2 class= "bed-size"> ${room.bedSize}</p2>
+        <p3 class= "num-beds"> Number of Beds: ${room.numBeds}</p3>
+        <img class= "mini-card-room-image" src= "https://www.pandotrip.com/wp-content/uploads/2017/12/Levin-Iglut-3.jpg" alt="Couple watching northern lights from bed">
+        <p4 class= "cost-display"> Cost: $${room.costPerNight}</p4>
+        <p5 class= "room-number"> Per Night </p5>
         </section>`
         return acc
       }, '')
@@ -158,8 +164,8 @@ let domUpdates = {
       </section>
       <p1> ${selectedRoom.bedSize} </p1>
       <p2> Number of Beds: ${selectedRoom.numBeds} </p2>
-      <p3> Has a Bidet?: ${selectedRoom.bidet} </p3>
-      <p4> $${selectedRoom.costPerNight}/night</p4>
+      <p3> Has a Bidet: ${selectedRoom.bidet} </p3>
+      <p4 class= "cost-display"> $${selectedRoom.costPerNight}/night</p4>
       </section>`
   },
 

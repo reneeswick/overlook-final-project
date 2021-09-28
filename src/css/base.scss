@@ -17,11 +17,13 @@ main {
   background-image: url(https://www.puredestinations.co.uk/wp-content/uploads/2018/03/The-Best-Hotels-To-See-The-Northern-Lights-header--1600x700.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 5px;
 }
 
 h1 {
   color: white;
   font-size: 2em;
+  margin: 0;
 }
 
 img {
@@ -83,6 +85,7 @@ header {
   color: white;
   font-size: 14pt;
   height: 44px;
+  padding: 7px;
 }
 
 nav {
@@ -112,17 +115,22 @@ nav {
   padding-right: 20px;
 }
 
+.login-form {
+  font-weight: 300;
+}
+
 .login-btn,
 .availability-btn,
 .book-now,
 .cancel {
   background-color: $button-color;
   border-radius: 20%;
+  border: none;
 }
 
 .navigation-container {
   @include navigation-container-alignment;
-  border-bottom: #BD243E solid 5px;
+  border-bottom: $header-border-color solid 5px;
   background-image: url(https://cdn.dribbble.com/users/4993316/screenshots/14396330/overlook_logo_large.jpg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -199,15 +207,35 @@ nav {
   opacity: 1;
 }
 
+.cost-display {
+  font-size: 12pt;
+  color: $header-border-color;
+}
+
 .mini-card-room-image {
   object-fit: contain;
   width: 25%;
 }
 
 .total-spent {
-  color: $button-color;
+  color: $header-border-color;
+  background-color: white;
   font-size: 14pt;
   float: right;
+  padding: 5px;
+  margin-bottom: 100px;
+  margin-right: 10px;
+}
+
+.room-number {
+  font-size: 10pt;
+  color: grey;
+}
+
+.num-beds,
+.bed-size {
+  font-size: 12pt;
+  color: black;
 }
 
 .popup-message {
