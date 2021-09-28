@@ -12,7 +12,7 @@ let hotelA;
 describe('Customer Test', () => {
   beforeEach(function() {
     rooms = {
-      rooms:[
+      rooms: [
         {
           number: 1,
           roomType: 'suite',
@@ -39,32 +39,32 @@ describe('Customer Test', () => {
         },
       ]
     };
-  bookings = {
-    bookings:[
-      {
-      id: "1abc23",
-      userID: 1,
-      date: "2020/04/22",
-      roomNumber: 1,
-      roomServiceCharges: []
-    },
-    {
-      id: "2def34",
-      userID: 1,
-      date: "2022/04/23",
-      roomNumber: 1,
-      roomServiceCharges: []
-    },
-    {
-      id: "3ghi45",
-      userID: 2,
-      date: "2020/04/22",
-      roomNumber: 3,
-      roomServiceCharges: []
-    },
+    bookings = {
+      bookings: [
+        {
+          id: "1abc23",
+          userID: 1,
+          date: "2020/04/22",
+          roomNumber: 1,
+          roomServiceCharges: []
+        },
+        {
+          id: "2def34",
+          userID: 1,
+          date: "2022/04/23",
+          roomNumber: 1,
+          roomServiceCharges: []
+        },
+        {
+          id: "3ghi45",
+          userID: 2,
+          date: "2020/04/22",
+          roomNumber: 3,
+          roomServiceCharges: []
+        },
 
-  ]
-};
+      ]
+    };
     hotelA = new Hotel('Hyatt', rooms, bookings);
     user1 = new Customer(1, 'Nico Ziller', hotelA);
     user2 = new Customer(2, 'Gracie Spaccamonti', hotelA)
@@ -100,10 +100,10 @@ describe('Customer Test', () => {
     let year = today.getFullYear();
     let month = today.getMonth() + 1;
     let date = today.getDate();
-    if(month < 10) {
+    if (month < 10) {
       month = `0${month}`
     }
-    if(date < 10) {
+    if (date < 10) {
       date = `0${date}`
     }
     let currentDate = `${year}/${month}/${date}`
