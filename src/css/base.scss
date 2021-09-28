@@ -9,7 +9,6 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  // background: $primary-background;
 }
 
 main {
@@ -23,7 +22,6 @@ main {
 h1 {
   color: white;
   font-size: 2em;
-  margin: 0;
 }
 
 img {
@@ -158,7 +156,9 @@ nav {
   min-height: 80vh;
   background-color: white;
   font-size: 14pt;
+  @include margins;
   color: $subtitle-color;
+  box-shadow: $standard-box-shadow;
 }
 
 .selected-room-img {
@@ -186,6 +186,7 @@ nav {
 .mini-card,
 .room-mini-card {
   @include align-mini-cards;
+  box-shadow: $standard-box-shadow;
   background-color: white;
   opacity: 0.7;
   color: $subtitle-color;
