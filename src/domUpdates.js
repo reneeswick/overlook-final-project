@@ -15,7 +15,7 @@ let domUpdates = {
   },
 
   showHomeView() {
-    if(currentCustomer === undefined) {
+    if (currentCustomer === undefined) {
       domUpdates.show(loginPrompt);
       domUpdates.show(loginForm);
       domUpdates.popUpError('Login first to book your stay')
@@ -31,7 +31,7 @@ let domUpdates = {
       domUpdates.hide(availableRoomsView);
       domUpdates.hide(availableRoomsCardContainer);
       domUpdates.hide(selectedRoomContainer);
-      pageTitle.innerText= 'Welcome to The Overlook';
+      pageTitle.innerText = 'Welcome to The Overlook';
     }
   },
 
@@ -40,7 +40,7 @@ let domUpdates = {
   },
 
   showUpcomingTrips() {
-    if(currentCustomer === undefined) {
+    if (currentCustomer === undefined) {
       domUpdates.popUpError('Login to view upcoming trips')
     } else {
       domUpdates.show(upcomingTripsView);
@@ -50,9 +50,9 @@ let domUpdates = {
       domUpdates.hide(pastTripsCardContainer);
       domUpdates.hide(totalSpent);
       domUpdates.hide(selectedRoomContainer);
-      pageTitle.innerText= 'Upcoming Trips';
+      pageTitle.innerText = 'Upcoming Trips';
       currentCustomer.viewUpcomingTrips();
-      if(currentCustomer.upcomingTrips.length === 0) {
+      if (currentCustomer.upcomingTrips.length === 0) {
         upcomingTripsCardContainer.innerHTML =
         `<section class= "confirmation" aria-label= "No upcoming trips">
         <p>Visit our home page to plan your next trip!</p>
@@ -76,7 +76,7 @@ let domUpdates = {
   },
 
   showPastTrips() {
-    if(currentCustomer === undefined) {
+    if (currentCustomer === undefined) {
       domUpdates.popUpError('Login to view your past trips')
     } else {
       domUpdates.show(pastTripsView);
@@ -89,7 +89,7 @@ let domUpdates = {
       getData(currentCustomer.id);
       currentCustomer.viewPastTrips();
       domUpdates.showTotalSpent();
-      pageTitle.innerText= 'Past Trips';
+      pageTitle.innerText = 'Past Trips';
       let pastTripMiniCards = currentCustomer.pastTrips.reduce((acc, trip) => {
         acc +=
         `<section class= "mini-card" aria-label= "rooms in your past trips">
@@ -109,15 +109,15 @@ let domUpdates = {
   },
 
   showAvailableRooms() {
-    if(checkInDate.value === '' || checkOutDate.value === '') {
+    if (checkInDate.value === '' || checkOutDate.value === '') {
       domUpdates.popUpError('Please select a date')
       return
     }
     domUpdates.show(availableRoomsView);
     domUpdates.show(availableRoomsCardContainer);
     let availableRooms = checkAvailability();
-    if(availableRooms.length === 0) {
-      availableRoomsCardContainer.innerHTML= "";
+    if (availableRooms.length === 0) {
+      availableRoomsCardContainer.innerHTML = "";
       availableRoomsCardContainer.innerHTML =
         `<section>
           <p1>We're sorry, there are currently no rooms available that meet your search.</p1>
@@ -172,11 +172,11 @@ let domUpdates = {
     currentCustomer.bookingDates = []
     let userID = currentCustomer.id;
     let roomNumber = parseInt(event.target.id);
-    if(event.target.className === 'book-now') {
+    if (event.target.className === 'book-now') {
       currentCustomer.setBookingDates(currentCustomer.checkInDate, currentCustomer.checkOutDate);
       currentCustomer.bookingDates.map((date) => {
         bookARoom(userID, date, roomNumber)
-        .then(() => selectedRoomContainer.innerHTML =
+          .then(() => selectedRoomContainer.innerHTML =
           `<section class= "confirmation" aria-label= "confirmation">
             <p1> Congratulations! Your booking for ${currentCustomer.name} was successful</p1>
           </section>`)
@@ -186,7 +186,7 @@ let domUpdates = {
   },
 
   cancelBooking(event) {
-    if(event.target.className === 'cancel') {
+    if (event.target.className === 'cancel') {
       let bookingsID = parseInt(event.target.id)
       cancelRoom(bookingsID)
     }
@@ -196,7 +196,9 @@ let domUpdates = {
     event.target.ariaHasPopup = true;
     domUpdates.show(popupMsg)
     popupMsg.innerText = message
-    setTimeout(() => {domUpdates.hide(popupMsg)}, 2000)
+    setTimeout(() => {
+      domUpdates.hide(popupMsg)
+    }, 2000)
   }
 }
 

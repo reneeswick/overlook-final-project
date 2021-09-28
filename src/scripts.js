@@ -30,7 +30,7 @@ const totalSpent = document.querySelector('#totalSpent');
 const username = document.querySelector('#username');
 const checkInDate = document.querySelector('#checkInDate');
 const checkOutDate = document.querySelector('#checkOutDate');
-const roomType = document.querySelector('#roomTypes');
+const roomTypes = document.querySelector('#roomTypes');
 const userNameInput = document.querySelector('#userNameInput');
 const userPasswordInput = document.querySelector('#userPasswordInput');
 const loginBtn = document.querySelector('#loginBtn');
@@ -49,12 +49,12 @@ loginBtn.addEventListener('click', authenticateUser);
 
 ////////// FUNCTIONS ////////////////
 export function getData(number) {
-  return Promise.all([fetchSingleCustomerData(number),fetchBookingsData(),fetchRoomsData()])
-  .then(data => organizeFetchedData(data))
-  .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
-  .then(() => domUpdates.displayUsername())
-  .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
-};
+  return Promise.all([fetchSingleCustomerData(number), fetchBookingsData(), fetchRoomsData()])
+    .then(data => organizeFetchedData(data))
+    .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
+    .then(() => domUpdates.displayUsername())
+    .catch(error => mainContentContainer.innerText = `We're sorry: ${error}`)
+}
 
 function organizeFetchedData(data) {
   let bookingsData;
@@ -64,7 +64,7 @@ function organizeFetchedData(data) {
   roomsData = data[2];
   let currentHotel = new Hotel('Overlook', roomsData, bookingsData)
   currentCustomer = new Customer(currentCustomer.id, currentCustomer.name, currentHotel)
-};
+}
 
 export function checkAvailability() {
   currentCustomer.checkInDate = null;
@@ -73,13 +73,13 @@ export function checkAvailability() {
   currentCustomer.checkOutDate = checkOutDate.value.split('-').join('/');
   let roomType = roomTypes.value
   let availableRooms;
-  if(roomType === 'all') {
+  if (roomType === 'all') {
     availableRooms = currentCustomer.hotel.findAvailability(currentCustomer.checkInDate, currentCustomer.checkOutDate);
   } else {
     availableRooms = currentCustomer.hotel.filterByRoomType(roomType, currentCustomer.checkInDate, currentCustomer.checkOutDate)
   }
   return availableRooms;
-};
+}
 
 function authenticateUser(event) {
   event.preventDefault()
@@ -88,17 +88,17 @@ function authenticateUser(event) {
   let allCustomers;
   let customerInfo;
   let userID;
-  if(password === 'overlook2021'){
+  if (password === 'overlook2021') {
     let customerData = fetchAllUserData()
-    .then(data => allCustomers = data)
-    .then(() => customerInfo = allCustomers.customers.find((customer) => {
-      return customer.id === parseInt(username)
-    }))
-    .then(() => userID = customerInfo.id.toString())
-    .catch(error => domUpdates.popUpError('Username is incorrect.'))
-    .then(() => getData(userID))
-    .then(() => domUpdates.showHomeView())
+      .then(data => allCustomers = data)
+      .then(() => customerInfo = allCustomers.customers.find((customer) => {
+        return customer.id === parseInt(username)
+      }))
+      .then(() => userID = customerInfo.id.toString())
+      .catch(error => domUpdates.popUpError('Username is incorrect.'))
+      .then(() => getData(userID))
+      .then(() => domUpdates.showHomeView())
   } else {
     domUpdates.popUpError('Password is incorrect.');
   }
-};
+}
