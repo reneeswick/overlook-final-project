@@ -95,9 +95,9 @@ function authenticateUser(event) {
         return customer.id === parseInt(username)
       }))
       .then(() => userID = customerInfo.id.toString())
-      .catch(error => domUpdates.popUpError('Username is incorrect.'))
       .then(() => getData(userID))
       .then(() => domUpdates.showHomeView())
+      .catch(error => domUpdates.popUpError('Username is incorrect.'))
   } else {
     domUpdates.popUpError('Password is incorrect.');
   }
