@@ -9,7 +9,7 @@ let bookings;
 describe('Hotel tests', () => {
   beforeEach(() => {
     rooms = {
-      rooms:[
+      rooms: [
         {
           number: 1,
           roomType: 'suite',
@@ -37,7 +37,7 @@ describe('Hotel tests', () => {
       ]
     };
     bookings = {
-      bookings:[{
+      bookings: [{
         id: "1abc23",
         userID: 1,
         date: "2020/04/22",
@@ -58,8 +58,8 @@ describe('Hotel tests', () => {
         roomNumber: 3,
         roomServiceCharges: []
       },
-    ]
-}
+      ]
+    }
     hotelA = new Hotel('Hyatt', rooms, bookings);
     hotelB = new Hotel('Marriot', rooms, bookings);
   });
